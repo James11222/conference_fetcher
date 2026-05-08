@@ -2,8 +2,9 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 
-from conference_fetcher.llm import LLMClient
+from conference_fetcher.llm import GitHubModelsLLMClient, LLMClient, create_llm_client_from_env
 from conference_fetcher.scraper import parse_recent_meetings
 from conference_fetcher.pipeline import PipelineConfig, format_email, read_cache, run_pipeline
 
@@ -21,6 +22,17 @@ class StaticLLMClient(LLMClient):
 
 
 class PipelineTests(unittest.TestCase):
+    def test_create_llm_client_uses_github_models_configuration(self) -> None:
+        with patch.dict(
+            "os.environ",
+            {"GITHUB_TOKEN": "token", "GITHUB_MODEL": "openai/gpt-4.1-mini"},
+            clear=True,
+        ):
+            client = create_llm_client_from_env()
+
+        self.assertIsInstance(client, GitHubModelsLLMClient)
+        self.assertEqual(client.model, "openai/gpt-4.1-mini")
+
     def test_run_pipeline_sends_selected_entries_and_updates_cache(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
