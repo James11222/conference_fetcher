@@ -25,7 +25,7 @@ class PipelineTests(unittest.TestCase):
     def test_create_llm_client_uses_github_models_configuration(self) -> None:
         with patch.dict(
             "os.environ",
-            {"GITHUB_TOKEN": "token", "GITHUB_MODEL": "openai/gpt-4.1-mini"},
+            {"GH_TOKEN": "token", "GH_MODEL": "openai/gpt-4.1-mini"},
             clear=True,
         ):
             client = create_llm_client_from_env()

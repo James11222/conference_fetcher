@@ -21,12 +21,12 @@ Automates a weekly conference digest for the CADC recent meetings page.
 
 Optional model variable:
 
-- `GITHUB_MODEL` (defaults to `openai/gpt-4.1`)
+- `GH_MODEL` (defaults to `openai/gpt-4.1`)
 
 Required workflow permissions and variables:
 
-- `models: read` permission for the workflow `GITHUB_TOKEN`
-- `GITHUB_MODEL` (optional repository variable)
+- `models: read` permission for the workflow token
+- `GH_MODEL` (optional repository variable)
 
 Required secrets/variables for GitHub Actions:
 
@@ -37,7 +37,7 @@ Required secrets/variables for GitHub Actions:
 - `SMTP_FROM`
 - `SMTP_TO`
 
-The workflow uses the built-in `GITHUB_TOKEN` for GitHub-hosted inference requests, so no separate Anthropic or custom GitHub token secret is required.
+The workflow maps the built-in `secrets.GITHUB_TOKEN` into `GH_TOKEN` for GitHub-hosted inference requests, so no custom model token secret is required.
 
 ## Email configuration
 

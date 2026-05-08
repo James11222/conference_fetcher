@@ -51,14 +51,10 @@ class GitHubModelsLLMClient(LLMClient):
 
 
 def create_llm_client_from_env() -> LLMClient:
-    token = (os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or "").strip()
+    token = (os.environ.get("GH_TOKEN") or "").strip()
     if not token:
-        raise ValueError("Set GITHUB_TOKEN before running the pipeline.")
-    model = (
-        os.environ.get("GITHUB_MODEL")
-        or os.environ.get("GH_MODEL")
-        or "openai/gpt-4.1"
-    ).strip()
+        raise ValueError("Set GH_TOKEN before running the pipeline.")
+    model = (os.environ.get("GH_MODEL") or "openai/gpt-4.1").strip()
     return GitHubModelsLLMClient(token, model)
 
 

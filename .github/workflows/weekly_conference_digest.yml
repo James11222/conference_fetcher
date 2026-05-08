@@ -28,8 +28,8 @@ jobs:
 
       - name: Run conference digest pipeline
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_MODEL: ${{ vars.GITHUB_MODEL }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_MODEL: ${{ vars.GH_MODEL }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
