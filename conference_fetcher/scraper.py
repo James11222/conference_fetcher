@@ -64,7 +64,7 @@ class _MeetingListParser(HTMLParser):
             if self._details_depth == 0:
                 self._start_item()
             self._details_depth += 1
-        elif tag in {"article"} or any(
+        elif tag == "article" or any(
             marker in classes.lower()
             for marker in ("views-row", "meeting", "conference", "node", "item", "list-group-item")
         ):
@@ -109,13 +109,15 @@ class _MeetingListParser(HTMLParser):
             self._finalize_current()
 
     def handle_data(self, data: str) -> None:
-        if not data.strip():
-            return
+        # Check summary before the whitespace guard so that spaces between tags
+        # inside <summary> (e.g. between an icon and the title text) are kept.
         if self._in_summary:
             self._summary_parts.append(data)
             # Also accumulate for link capture so linked summaries get URL recorded.
             if self._link_href is not None:
                 self._link_parts.append(data)
+            return
+        if not data.strip():
             return
         if self._heading_level is not None:
             self._heading_parts.append(data)
