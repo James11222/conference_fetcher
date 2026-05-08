@@ -59,6 +59,7 @@ Optional repository variable:
 From the repository root:
 
 ```bash
+python -m pip install -r requirements.txt
 python -m unittest discover -v
 python -m conference_fetcher
 ```

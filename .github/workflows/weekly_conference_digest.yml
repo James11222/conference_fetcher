@@ -26,6 +26,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
       - name: Run conference digest pipeline
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
