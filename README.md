@@ -5,9 +5,9 @@ Automates a weekly conference digest for the CADC recent meetings page.
 ## What it does
 
 - Scrapes `https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/meetings/recent/`
-- Reads filtering preferences from `/home/runner/work/conference_fetcher/conference_fetcher/preferences.md`
+- Reads filtering preferences from `preferences.md`
 - Uses an LLM backend to shortlist conference entries
-- Avoids duplicate notifications by tracking previously emailed entries in `/home/runner/work/conference_fetcher/conference_fetcher/cache.md`
+- Avoids duplicate notifications by tracking previously emailed entries in `cache.md`
 - Sends a weekly email summary on Monday mornings at 10:00 UTC through GitHub Actions
 
 ## Repository files
@@ -60,7 +60,7 @@ Optional repository variable:
 
 ## Running locally
 
-From `/home/runner/work/conference_fetcher/conference_fetcher`:
+From the repository root:
 
 ```bash
 python -m unittest discover -v

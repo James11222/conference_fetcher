@@ -83,11 +83,13 @@ def read_cache(cache_path: Path) -> set[str]:
 
 
 def write_cache(cache_path: Path, cached_ids: set[str], entries: list[ConferenceEntry], now: datetime) -> None:
-    existing_lines = {
-        line.split("`", 2)[1]: line
-        for line in cache_path.read_text(encoding="utf-8").splitlines()
-        if cache_path.exists() and line.startswith("- `") and "`" in line[3:]
-    } if cache_path.exists() else {}
+    existing_lines: dict[str, str] = {}
+    if cache_path.exists():
+        existing_lines = {
+            line.split("`", 2)[1]: line
+            for line in cache_path.read_text(encoding="utf-8").splitlines()
+            if line.startswith("- `") and "`" in line[3:]
+        }
     for entry in entries:
         existing_lines[entry.cache_key] = (
             f"- `{entry.cache_key}` | {entry.title} | {entry.dates or 'date TBD'} | "

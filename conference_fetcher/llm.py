@@ -118,11 +118,10 @@ def _selected_entries_from_response(entries: list[ConferenceEntry], response_tex
 def _extract_json_object(text: str) -> dict:
     stripped = text.strip()
     if stripped.startswith("```"):
-        stripped = stripped.strip("`")
+        stripped = stripped.lstrip("`")
         if "\n" in stripped:
             stripped = stripped.split("\n", 1)[1]
-        if stripped.endswith("```"):
-            stripped = stripped[:-3]
+        stripped = stripped.rstrip("`").rstrip()
     start = stripped.find("{")
     end = stripped.rfind("}")
     if start == -1 or end == -1 or end < start:
