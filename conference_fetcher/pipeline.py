@@ -62,6 +62,8 @@ def run_pipeline(
     parsed_entries = parse_recent_meetings(html)
     cached_ids = read_cache(config.cache_path)
     unseen_entries = [entry for entry in parsed_entries if entry.cache_key not in cached_ids]
+    print("Pre-LLM sort: ")
+    print(unseen_entries)
     selected_entries = llm_client.select_conferences(unseen_entries, preferences) if unseen_entries else []
     if selected_entries:
         # show that the entries were successfully found
