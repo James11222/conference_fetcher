@@ -48,21 +48,30 @@ class PipelineTests(unittest.TestCase):
                 smtp_from="from@example.com",
                 smtp_to="to@example.com",
             )
-            html = """
-            <article>
-              <h2>Astro AI Summit 2026</h2>
-              <p>Conference dates: July 10-12, 2026</p>
-              <p>Location: Montreal, Canada</p>
-              <p>Registration deadline: May 20, 2026</p>
-              <p>Pre-registration deadline: May 1, 2026</p>
-              <p>Abstract submission deadline: April 15, 2026</p>
-            </article>
-            <article>
-              <h2>Quantum Networking Workshop</h2>
-              <p>Dates: August 2-5, 2026</p>
-              <p>Location: Berlin, Germany</p>
-            </article>
-            """
+            json_data = [
+                {
+                    "title": "Astro AI Summit 2026",
+                    "start": "2026-07-10",
+                    "end": "2026-07-12",
+                    "location": "Montreal, Canada",
+                    "web1": "https://example.com/astro-ai-2026",
+                    "web2": "",
+                    "contact": "Jane Smith",
+                    "email": "jane@example.com",
+                    "keywords": "",
+                },
+                {
+                    "title": "Quantum Networking Workshop",
+                    "start": "2026-08-02",
+                    "end": "2026-08-05",
+                    "location": "Berlin, Germany",
+                    "web1": "",
+                    "web2": "",
+                    "contact": "",
+                    "email": "",
+                    "keywords": "",
+                },
+            ]
             sent_messages = []
 
             def fake_sender(_config, body):
@@ -71,7 +80,7 @@ class PipelineTests(unittest.TestCase):
             selected = run_pipeline(
                 config=config,
                 llm_client=StaticLLMClient({"Astro AI Summit 2026"}),
-                fetch_html=lambda: html,
+                fetch_data=lambda: json_data,
                 email_sender=fake_sender,
                 now=datetime(2026, 5, 8, tzinfo=timezone.utc),
             )
@@ -87,17 +96,23 @@ class PipelineTests(unittest.TestCase):
             root = Path(temp_dir)
             (root / "preferences.md").write_text("- anything\n", encoding="utf-8")
             cache_path = root / "cache.md"
-            html = """
-            <article>
-              <h2>Astro AI Summit 2026</h2>
-              <p>Conference dates: July 10-12, 2026</p>
-              <p>Location: Montreal, Canada</p>
-            </article>
-            """
-            entry = parse_recent_meetings(html)[0]
+            json_data = [
+                {
+                    "title": "Astro AI Summit 2026",
+                    "start": "2026-07-10",
+                    "end": "2026-07-12",
+                    "location": "Montreal, Canada",
+                    "web1": "",
+                    "web2": "",
+                    "contact": "",
+                    "email": "",
+                    "keywords": "",
+                }
+            ]
+            entry = parse_recent_meetings(json_data)[0]
             cache_path.write_text(
                 "# Conference notification cache\n\nConferences listed here have already been included in an email notification.\n\n"
-                f"- `{entry.cache_key}` | Astro AI Summit 2026 | July 10-12, 2026 | Montreal, Canada | notified 2026-05-01\n",
+                f"- `{entry.cache_key}` | Astro AI Summit 2026 | 2026-07-10 to 2026-07-12 | Montreal, Canada | notified 2026-05-01\n",
                 encoding="utf-8",
             )
             config = PipelineConfig(
@@ -116,7 +131,7 @@ class PipelineTests(unittest.TestCase):
             run_pipeline(
                 config=config,
                 llm_client=StaticLLMClient({"Astro AI Summit 2026"}),
-                fetch_html=lambda: html,
+                fetch_data=lambda: json_data,
                 email_sender=lambda _config, body: sent_messages.append(body),
                 now=datetime(2026, 5, 8, tzinfo=timezone.utc),
             )

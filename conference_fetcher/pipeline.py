@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import os
 import smtplib
-import urllib.request
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from email.message import EmailMessage
@@ -47,19 +46,19 @@ class PipelineConfig:
 def run_pipeline(
     config: PipelineConfig | None = None,
     llm_client: LLMClient | None = None,
-    fetch_html: Callable[[], str] | None = None,
+    fetch_data: Callable[[], list] | None = None,
     email_sender: Callable[[PipelineConfig, str], None] | None = None,
     now: datetime | None = None,
 ) -> list[ConferenceEntry]:
     config = config or PipelineConfig.from_env()
     llm_client = llm_client or create_llm_client_from_env()
-    fetch_html = fetch_html or (lambda: fetch_recent_meetings(urllib.request.urlopen))
+    fetch_data = fetch_data or fetch_recent_meetings
     email_sender = email_sender or send_email
     current_time = now or datetime.now(timezone.utc)
 
     preferences = config.preferences_path.read_text(encoding="utf-8")
-    html = fetch_html()
-    parsed_entries = parse_recent_meetings(html)
+    data = fetch_data()
+    parsed_entries = parse_recent_meetings(data)
     cached_ids = read_cache(config.cache_path)
     unseen_entries = [entry for entry in parsed_entries if entry.cache_key not in cached_ids]
     print("Pre-LLM sort: ")
