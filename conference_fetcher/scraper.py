@@ -51,43 +51,72 @@ class _MeetingListParser(HTMLParser):
         self._link_href: str | None = None
         self._link_parts: list[str] = []
         self._in_item = 0
+        # <details>/<summary> support
+        self._details_depth: int = 0
+        self._in_summary: bool = False
+        self._summary_parts: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attrs_dict = {name: value or "" for name, value in attrs}
         classes = attrs_dict.get("class", "")
-        if tag in {"article", "li"} or any(
+        if tag == "details":
+            # Each <details> element is a conference entry on the CADC page.
+            if self._details_depth == 0:
+                self._start_item()
+            self._details_depth += 1
+        elif tag == "article" or any(
             marker in classes.lower()
             for marker in ("views-row", "meeting", "conference", "node", "item", "list-group-item")
         ):
             self._start_item()
+        if tag == "summary" and self._details_depth > 0 and self._current is not None:
+            self._in_summary = True
+            self._summary_parts = []
         if tag in {"h1", "h2", "h3", "h4", "h5", "h6"}:
             self._heading_level = int(tag[1])
             self._heading_parts = []
         if tag == "a":
             self._link_href = attrs_dict.get("href")
             self._link_parts = []
-        if tag in {"br", "p", "div", "li"} and self._current is not None:
+        if tag in {"br", "p", "div", "li", "dt", "dd"} and self._current is not None:
             self._text_parts.append("\n")
 
     def handle_endtag(self, tag: str) -> None:
+        if tag == "summary" and self._in_summary:
+            self._in_summary = False
+            title = _clean_text("".join(self._summary_parts))
+            if self._current is not None and title:
+                self._current["title"] = title
         if tag in {"h1", "h2", "h3", "h4", "h5", "h6"} and self._heading_level is not None:
             heading = _clean_text("".join(self._heading_parts))
             self._heading_level = None
-            if heading:
-                if self._current is None:
-                    self._start_item()
-                if self._current is not None:
-                    self._finish_current_if_heading_starts_new_item(heading)
+            # Only use headings to name entries when we are inside a non-details
+            # container (e.g. <article>). Headings outside any container are
+            # page-level navigation and should not generate entries.
+            if heading and self._current is not None and self._details_depth == 0:
+                self._finish_current_if_heading_starts_new_item(heading)
         if tag == "a" and self._link_href:
             link_text = _clean_text("".join(self._link_parts))
             if self._current is not None and not self._current.get("url") and link_text:
                 self._current["url"] = self._link_href
             self._link_href = None
             self._link_parts = []
-        if tag in {"article", "li"} and self._current is not None:
+        if tag == "details":
+            self._details_depth = max(0, self._details_depth - 1)
+            if self._details_depth == 0 and self._current is not None:
+                self._finalize_current()
+        elif tag == "article" and self._current is not None:
             self._finalize_current()
 
     def handle_data(self, data: str) -> None:
+        # Check summary before the whitespace guard so that spaces between tags
+        # inside <summary> (e.g. between an icon and the title text) are kept.
+        if self._in_summary:
+            self._summary_parts.append(data)
+            # Also accumulate for link capture so linked summaries get URL recorded.
+            if self._link_href is not None:
+                self._link_parts.append(data)
+            return
         if not data.strip():
             return
         if self._heading_level is not None:
