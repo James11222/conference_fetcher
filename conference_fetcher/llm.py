@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import urllib.error
 import urllib.request
 from dataclasses import replace
 
@@ -13,35 +14,8 @@ class LLMClient:
         raise NotImplementedError
 
 
-class AnthropicLLMClient(LLMClient):
-    def __init__(self, api_key: str, model: str = "claude-3-5-sonnet-latest") -> None:
-        self.api_key = api_key
-        self.model = model
-
-    def select_conferences(self, entries: list[ConferenceEntry], preferences: str) -> list[ConferenceEntry]:
-        payload = {
-            "model": self.model,
-            "max_tokens": 1500,
-            "messages": [{"role": "user", "content": _build_prompt(entries, preferences)}],
-        }
-        request = urllib.request.Request(
-            "https://api.anthropic.com/v1/messages",
-            data=json.dumps(payload).encode("utf-8"),
-            headers={
-                "content-type": "application/json",
-                "x-api-key": self.api_key,
-                "anthropic-version": "2023-06-01",
-            },
-            method="POST",
-        )
-        with urllib.request.urlopen(request, timeout=120) as response:
-            body = json.loads(response.read().decode("utf-8"))
-        text = "".join(part.get("text", "") for part in body.get("content", []))
-        return _selected_entries_from_response(entries, text)
-
-
 class GitHubModelsLLMClient(LLMClient):
-    def __init__(self, token: str, model: str = "gpt-4o-mini") -> None:
+    def __init__(self, token: str, model: str = "openai/gpt-4.1") -> None:
         self.token = token
         self.model = model
 
@@ -49,32 +23,39 @@ class GitHubModelsLLMClient(LLMClient):
         payload = {
             "model": self.model,
             "messages": [{"role": "user", "content": _build_prompt(entries, preferences)}],
+            "response_format": {"type": "json_object"},
             "temperature": 0.1,
         }
         request = urllib.request.Request(
-            "https://models.inference.ai.azure.com/chat/completions",
+            "https://models.github.ai/inference/chat/completions",
             data=json.dumps(payload).encode("utf-8"),
             headers={
+                "accept": "application/vnd.github+json",
                 "content-type": "application/json",
                 "authorization": f"Bearer {self.token}",
+                "x-github-api-version": "2022-11-28",
             },
             method="POST",
         )
-        with urllib.request.urlopen(request, timeout=120) as response:
-            body = json.loads(response.read().decode("utf-8"))
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response:
+                body = json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as error:
+            if error.code in {401, 403}:
+                raise RuntimeError(
+                    "GitHub Models request was unauthorized. Ensure the token has models:read access."
+                ) from error
+            raise
         text = body["choices"][0]["message"]["content"]
         return _selected_entries_from_response(entries, text)
 
 
 def create_llm_client_from_env() -> LLMClient:
-    backend = os.environ.get("LLM_BACKEND", "anthropic").strip().lower()
-    if backend == "anthropic":
-        api_key = os.environ["ANTHROPIC_API_KEY"]
-        return AnthropicLLMClient(api_key, os.environ.get("ANTHROPIC_MODEL", "claude-3-5-sonnet-latest"))
-    if backend in {"github", "copilot", "github_models"}:
-        token = os.environ["GITHUB_TOKEN"]
-        return GitHubModelsLLMClient(token, os.environ.get("GITHUB_MODEL", "gpt-4o-mini"))
-    raise ValueError("LLM_BACKEND must be one of: anthropic, github, copilot, github_models")
+    token = (os.environ.get("GH_TOKEN") or "").strip()
+    if not token:
+        raise ValueError("Set GH_TOKEN before running the pipeline.")
+    model = (os.environ.get("GH_MODEL") or "openai/gpt-4.1").strip()
+    return GitHubModelsLLMClient(token, model)
 
 
 def _build_prompt(entries: list[ConferenceEntry], preferences: str) -> str:
