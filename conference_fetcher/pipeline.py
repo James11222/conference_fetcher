@@ -63,12 +63,14 @@ def run_pipeline(
     cached_ids = read_cache(config.cache_path)
     unseen_entries = [entry for entry in parsed_entries if entry.cache_key not in cached_ids]
     selected_entries = llm_client.select_conferences(unseen_entries, preferences) if unseen_entries else []
-    email_body = format_email(selected_entries)
-    email_sender(config, email_body)
     if selected_entries:
+        # show that the entries were successfully found
+        print(selected_entries)
         write_cache(config.cache_path, cached_ids | {entry.cache_key for entry in selected_entries}, selected_entries, current_time)
     elif not config.cache_path.exists():
         write_cache(config.cache_path, cached_ids, [], current_time)
+    email_body = format_email(selected_entries)
+    email_sender(config, email_body)
     return selected_entries
 
 
