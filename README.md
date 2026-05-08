@@ -39,7 +39,7 @@ Required secrets/variables for GitHub Actions:
 ### For GitHub-hosted models
 
 - `LLM_BACKEND=github` (repository variable)
-- `GITHUB_MODEL` (optional repository variable)
+- `GH_MODEL` (optional repository variable mapped to `GITHUB_MODEL` in the workflow environment)
 
 The workflow uses the built-in `GITHUB_TOKEN` for GitHub-hosted inference requests.
 
