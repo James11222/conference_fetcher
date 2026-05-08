@@ -11,7 +11,9 @@ MEETINGS_API_URL = "https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/meetings/meetin
 
 
 def fetch_recent_meetings() -> list[dict]:
-    return requests.get(MEETINGS_API_URL, timeout=30).json()
+    response = requests.get(MEETINGS_API_URL, timeout=30)
+    response.raise_for_status()
+    return response.json()
 
 
 def parse_recent_meetings(data: list[dict]) -> list[ConferenceEntry]:
