@@ -194,7 +194,8 @@ def _html_conference_card(index: int, entry: ConferenceEntry) -> str:
 
 
 def format_email_html(entries: list[ConferenceEntry]) -> str:
-    today = date.today().strftime("%A, %B %-d, %Y")
+    _today = date.today()
+    today = _today.strftime("%A, %B ") + str(_today.day) + _today.strftime(", %Y")
 
     if not entries:
         body_content = (
