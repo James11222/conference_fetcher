@@ -6,7 +6,7 @@ from unittest.mock import patch
 
 from conference_fetcher.llm import GitHubModelsLLMClient, LLMClient, create_llm_client_from_env
 from conference_fetcher.scraper import parse_recent_meetings
-from conference_fetcher.pipeline import PipelineConfig, format_email, read_cache, run_pipeline
+from conference_fetcher.pipeline import PipelineConfig, format_email, format_email_html, read_cache, run_pipeline
 
 
 class StaticLLMClient(LLMClient):
@@ -74,8 +74,8 @@ class PipelineTests(unittest.TestCase):
             ]
             sent_messages = []
 
-            def fake_sender(_config, body):
-                sent_messages.append(body)
+            def fake_sender(_config, text_body, html_body):
+                sent_messages.append((text_body, html_body))
 
             selected = run_pipeline(
                 config=config,
@@ -87,8 +87,13 @@ class PipelineTests(unittest.TestCase):
 
             self.assertEqual([entry.title for entry in selected], ["Astro AI Summit 2026"])
             self.assertEqual(len(sent_messages), 1)
-            self.assertIn("Astro AI Summit 2026", sent_messages[0])
-            self.assertNotIn("Quantum Networking Workshop", sent_messages[0])
+            text_body, html_body = sent_messages[0]
+            self.assertIn("Astro AI Summit 2026", text_body)
+            self.assertNotIn("Quantum Networking Workshop", text_body)
+            self.assertIn("Astro AI Summit 2026", html_body)
+            self.assertNotIn("Quantum Networking Workshop", html_body)
+            self.assertIn("<!DOCTYPE html>", html_body)
+            self.assertIn("Conference Digest", html_body)
             self.assertEqual(len(read_cache(config.cache_path)), 1)
 
     def test_run_pipeline_sends_friendly_message_when_everything_is_cached(self) -> None:
@@ -132,13 +137,45 @@ class PipelineTests(unittest.TestCase):
                 config=config,
                 llm_client=StaticLLMClient({"Astro AI Summit 2026"}),
                 fetch_data=lambda: json_data,
-                email_sender=lambda _config, body: sent_messages.append(body),
+                email_sender=lambda _config, text_body, html_body: sent_messages.append((text_body, html_body)),
                 now=datetime(2026, 5, 8, tzinfo=timezone.utc),
             )
 
             self.assertEqual(len(sent_messages), 1)
-            self.assertIn("There are no new conferences", sent_messages[0])
+            text_body, html_body = sent_messages[0]
+            self.assertIn("There are no new conferences", text_body)
+            self.assertIn("No new conferences this week", html_body)
 
     def test_format_email_uses_fallback_text_for_missing_fields(self) -> None:
         body = format_email([])
         self.assertIn("There are no new conferences", body)
+
+    def test_format_email_html_empty_returns_no_conferences_message(self) -> None:
+        html_body = format_email_html([])
+        self.assertIn("<!DOCTYPE html>", html_body)
+        self.assertIn("No new conferences this week", html_body)
+        self.assertIn("Conference Digest", html_body)
+
+    def test_format_email_html_with_entries_includes_all_fields(self) -> None:
+        from conference_fetcher.models import ConferenceEntry
+
+        entry = ConferenceEntry(
+            title="Test Astronomy Meeting 2026",
+            dates="2026-09-01 to 2026-09-05",
+            location="Paris, France",
+            registration_deadline="2026-07-15",
+            preregistration_deadline="2026-06-01",
+            abstract_deadline="2026-06-30",
+            details="Contact: test@example.com",
+            url="https://example.com/test",
+            llm_reason="Matches astronomy preferences",
+        )
+        html_body = format_email_html([entry])
+        self.assertIn("<!DOCTYPE html>", html_body)
+        self.assertIn("Test Astronomy Meeting 2026", html_body)
+        self.assertIn("Paris, France", html_body)
+        self.assertIn("2026-09-01 to 2026-09-05", html_body)
+        self.assertIn("https://example.com/test", html_body)
+        self.assertIn("Matches astronomy preferences", html_body)
+        self.assertIn("Why it matched", html_body)
+        self.assertIn("Conference Digest", html_body)

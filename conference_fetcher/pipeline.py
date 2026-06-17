@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import html
 import os
 import smtplib
 from dataclasses import dataclass
-from datetime import datetime, timezone
-from email.message import EmailMessage
+from datetime import date, datetime, timezone
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from pathlib import Path
 from typing import Callable
 
@@ -47,7 +49,7 @@ def run_pipeline(
     config: PipelineConfig | None = None,
     llm_client: LLMClient | None = None,
     fetch_data: Callable[[], list] | None = None,
-    email_sender: Callable[[PipelineConfig, str], None] | None = None,
+    email_sender: Callable[[PipelineConfig, str, str], None] | None = None,
     now: datetime | None = None,
 ) -> list[ConferenceEntry]:
     config = config or PipelineConfig.from_env()
@@ -71,7 +73,8 @@ def run_pipeline(
     elif not config.cache_path.exists():
         write_cache(config.cache_path, cached_ids, [], current_time)
     email_body = format_email(selected_entries)
-    email_sender(config, email_body)
+    email_html_body = format_email_html(selected_entries)
+    email_sender(config, email_body, email_html_body)
     return selected_entries
 
 
@@ -135,12 +138,134 @@ def format_email(entries: list[ConferenceEntry]) -> str:
     return "\n".join(sections)
 
 
-def send_email(config: PipelineConfig, body: str) -> None:
-    message = EmailMessage()
+def _html_escape(value: str) -> str:
+    return html.escape(value or "Not listed")
+
+
+def _meta_row(label: str, value: str) -> str:
+    escaped_value = _html_escape(value)
+    return (
+        f'<tr>'
+        f'<td style="font-size:12px;font-weight:600;color:#5f6368;white-space:nowrap;'
+        f'padding:3px 12px 3px 0;vertical-align:top;">{html.escape(label)}</td>'
+        f'<td style="font-size:13px;color:#3c4043;padding:3px 0;">{escaped_value}</td>'
+        f'</tr>'
+    )
+
+
+def _html_conference_card(index: int, entry: ConferenceEntry) -> str:
+    title = html.escape(entry.title)
+    url = html.escape(entry.url or "", quote=True)
+    title_html = (
+        f'<a href="{url}" style="font-size:17px;font-weight:700;color:#1a73e8;'
+        f'text-decoration:none;line-height:1.3;">{title}</a>'
+        if entry.url else
+        f'<span style="font-size:17px;font-weight:700;color:#1a1a2e;line-height:1.3;">{title}</span>'
+    )
+    reason = html.escape(entry.llm_reason or "Matched your saved preferences.")
+
+    meta_rows = "".join([
+        _meta_row("Dates", entry.dates),
+        _meta_row("Location", entry.location),
+        _meta_row("Registration deadline", entry.registration_deadline),
+        _meta_row("Pre-registration deadline", entry.preregistration_deadline),
+        _meta_row("Abstract deadline", entry.abstract_deadline),
+        _meta_row("Details", entry.details),
+    ])
+
+    return (
+        f'<tr><td style="padding:0 0 24px 0;">'
+        f'<div style="background:#ffffff;border:1px solid #e8eaed;border-radius:10px;'
+        f'padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.06);">'
+        f'<div style="font-size:11px;font-weight:700;color:#9aa0a6;letter-spacing:.06em;'
+        f'text-transform:uppercase;margin-bottom:6px;">#{index}</div>'
+        f'{title_html}'
+        f'<table role="presentation" cellpadding="0" cellspacing="0" '
+        f'style="margin-top:12px;border-collapse:collapse;">{meta_rows}</table>'
+        f'<div style="margin-top:14px;background:#f1f8ff;border-left:3px solid #1a73e8;'
+        f'border-radius:0 6px 6px 0;padding:10px 14px;">'
+        f'<div style="font-size:11px;font-weight:700;color:#1a73e8;letter-spacing:.05em;'
+        f'text-transform:uppercase;margin-bottom:4px;">Why it matched</div>'
+        f'<div style="font-size:13px;color:#3c4043;line-height:1.5;">{reason}</div>'
+        f'</div>'
+        f'</div>'
+        f'</td></tr>'
+    )
+
+
+def format_email_html(entries: list[ConferenceEntry]) -> str:
+    today = date.today().strftime("%A, %B %-d, %Y")
+
+    if not entries:
+        body_content = (
+            '<tr><td style="padding:20px 0;">'
+            '<div style="background:#f1f8ff;border:1px solid #c8e6fa;border-radius:10px;'
+            'padding:28px 24px;text-align:center;">'
+            '<div style="font-size:32px;margin-bottom:10px;">📭</div>'
+            '<div style="font-size:16px;font-weight:600;color:#3c4043;margin-bottom:6px;">'
+            'No new conferences this week</div>'
+            '<div style="font-size:14px;color:#5f6368;">'
+            'There are no new conferences to be aware of at this time.</div>'
+            '</div>'
+            '</td></tr>'
+        )
+    else:
+        n = len(entries)
+        plural = "conference" if n == 1 else "conferences"
+        intro = (
+            f'<tr><td style="padding:0 0 20px 0;">'
+            f'<p style="font-size:15px;color:#3c4043;margin:0;">'
+            f'<strong>{n}</strong> {plural} matched your preferences this week.</p>'
+            f'</td></tr>'
+        )
+        cards = "".join(_html_conference_card(i, e) for i, e in enumerate(entries, start=1))
+        body_content = intro + cards
+
+    return f"""\
+<!DOCTYPE html>
+<html lang="en">
+<body style="margin:0;padding:0;background:#f4f5f7;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+         style="background:#f4f5f7;padding:24px 0;">
+    <tr><td align="center">
+      <table role="presentation" width="620" cellpadding="0" cellspacing="0"
+             style="max-width:620px;width:100%;
+                    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
+                    Roboto,Helvetica,Arial,sans-serif;">
+        <!-- Header -->
+        <tr><td style="background:#1a1a2e;padding:28px 32px;border-radius:12px 12px 0 0;">
+          <div style="font-size:22px;font-weight:700;color:#ffffff;">
+            📅 Conference Digest</div>
+          <div style="font-size:14px;color:#b8b8d0;margin-top:6px;">{today}</div>
+        </td></tr>
+        <!-- Body -->
+        <tr><td style="background:#f8f9fa;padding:28px 28px 8px 28px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%"
+                 style="border-collapse:collapse;">
+            {body_content}
+          </table>
+        </td></tr>
+        <!-- Footer -->
+        <tr><td style="background:#f8f9fa;padding:16px 28px 28px 28px;
+                        border-top:1px solid #e8eaed;border-radius:0 0 12px 12px;">
+          <p style="font-size:12px;color:#9aa0a6;margin:0;line-height:1.6;">
+            Sent by <strong>conference_fetcher</strong>.
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>"""
+
+
+def send_email(config: PipelineConfig, text_body: str, html_body: str) -> None:
+    message = MIMEMultipart("alternative")
     message["Subject"] = "Weekly conference digest"
     message["From"] = config.smtp_from
     message["To"] = config.smtp_to
-    message.set_content(body)
+    message.attach(MIMEText(text_body, "plain", "utf-8"))
+    message.attach(MIMEText(html_body, "html", "utf-8"))
     if config.smtp_starttls:
         with smtplib.SMTP(config.smtp_host, config.smtp_port, timeout=60) as smtp:
             smtp.starttls()
