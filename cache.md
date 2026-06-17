@@ -2,10 +2,12 @@
 
 Conferences listed here have already been included in an email notification.
 
+- `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
 - `6aca46cb69c0aac8` | Galaxy nuclei – Diversity, Dynamics, and Hidden Mass in Galactic Centers | 2026-11-16 to 2026-11-20 | ESO Santiago, Chile | notified 2026-05-11
 - `7732d89c3acd56ea` | LSST@Asia 2027 | 2027-04-19 to 2027-04-23 | Seoul, South Korea | notified 2026-06-15
+- `7af9fee9424d2ee6` | MATISSE Science Days | 2026-09-29 to 2026-10-02 | Budapest, Hungary | notified 2026-06-17
 - `7ffa9ff617350ec0` | Open SkAI 2026: Annual Astronomy & AI Conference at SkAI | 2026-09-08 to 2026-09-11 | NSF-Simons AI Institute for the Sky (SkAI), Chicago, USA | notified 2026-05-08
 - `8ac28b41a2be1411` | 12th KIAS Workshop on Cosmology and Structure Formation | 2026-11-01 to 2026-11-07 | Korea Institute for Advanced Study (KIAS), Seoul, Republic of Korea | notified 2026-06-08
 - `8d1a1553f10e1b89` | INTEGRAL Legacy Conference 2026 | 2026-10-19 to 2026-10-23 | Paris, France | notified 2026-05-18
