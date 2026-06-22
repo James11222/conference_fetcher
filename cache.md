@@ -2,6 +2,7 @@
 
 Conferences listed here have already been included in an email notification.
 
+- `0bcaebac926f9a60` | Rubin Community Workshop 2027 | 2027-08-02 to 2027-08-06 | Tucson AZ USA | notified 2026-06-22
 - `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
@@ -11,6 +12,7 @@ Conferences listed here have already been included in an email notification.
 - `7ffa9ff617350ec0` | Open SkAI 2026: Annual Astronomy & AI Conference at SkAI | 2026-09-08 to 2026-09-11 | NSF-Simons AI Institute for the Sky (SkAI), Chicago, USA | notified 2026-05-08
 - `8ac28b41a2be1411` | 12th KIAS Workshop on Cosmology and Structure Formation | 2026-11-01 to 2026-11-07 | Korea Institute for Advanced Study (KIAS), Seoul, Republic of Korea | notified 2026-06-08
 - `8d1a1553f10e1b89` | INTEGRAL Legacy Conference 2026 | 2026-10-19 to 2026-10-23 | Paris, France | notified 2026-05-18
+- `98f84bc1953f8df8` | Vera C. Rubin Observatory Community Workshop 2026 | 2026-07-27 to 2026-07-31 | SLAC Menlo Park | notified 2026-06-22
 - `b47b7876716a1753` | A new window into the innermost regions of accreting massive black holes | 2027-04-04 to 2027-04-09 | Ascona, Switzerland | notified 2026-05-25
 - `c81944bc85e52e9b` | Little Red Dots 2026 | 2026-06-22 to 2026-06-24 | online | notified 2026-05-08
 - `cfa906b2a2832b5f` | Deepdish-Baguette: Stars, Black Holes, and Feedback From Cosmic Dawn to Cosmic Noon | 2027-04-12 to 2027-04-16 | Paris, France | notified 2026-06-15
