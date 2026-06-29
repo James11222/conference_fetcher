@@ -2,6 +2,7 @@
 
 Conferences listed here have already been included in an email notification.
 
+- `05a244637bde8696` | AGN Jets from Gamsberg to the Multi-Messenger Frontier | 2027-01-18 to 2027-01-22 | Windhoek, Namibia | notified 2026-06-29
 - `0bcaebac926f9a60` | Rubin Community Workshop 2027 | 2027-08-02 to 2027-08-06 | Tucson AZ USA | notified 2026-06-22
 - `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
@@ -18,4 +19,5 @@ Conferences listed here have already been included in an email notification.
 - `cfa906b2a2832b5f` | Deepdish-Baguette: Stars, Black Holes, and Feedback From Cosmic Dawn to Cosmic Noon | 2027-04-12 to 2027-04-16 | Paris, France | notified 2026-06-15
 - `d2a9156d1f21c73b` | Simulations of Galaxy Evolution: Advancements, Revolutions and Struggles (Simulations GEARS) | 2026-11-02 to 2026-11-06 | Kashiwanoha, Tokyo, Japan | notified 2026-06-15
 - `d5412a60681ab597` | Surveying the Universe in 4D: Beating Cosmic Variance with Wide-Field Slitless Spectroscopy from HST, JWST, Euclid, Roman, and Beyond | 2026-08-24 to 2026-08-28 | Space Telescope Science Institute | notified 2026-05-08
+- `d57bd992b58b5406` | Probe Combination for Dark Matter Physics in the Era of Large Surveys | 2026-09-02 to 2026-09-04 | Chicago, IL | notified 2026-06-29
 - `e611e6b5fc4ddbc7` | SPARCS XIV: The SKAO Awakens (SKA Pathfinder and Radio Continuum Surveys conference) | 2026-10-19 to 2026-10-23 | Seoul, South Korea | notified 2026-05-11
