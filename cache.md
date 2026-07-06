@@ -3,10 +3,12 @@
 Conferences listed here have already been included in an email notification.
 
 - `05a244637bde8696` | AGN Jets from Gamsberg to the Multi-Messenger Frontier | 2027-01-18 to 2027-01-22 | Windhoek, Namibia | notified 2026-06-29
+- `063496d23584784d` | COSMOGOLD IAP 2026 | 2026-12-14 to 2026-12-18 | IAP, Paris, France | notified 2026-07-06
 - `0bcaebac926f9a60` | Rubin Community Workshop 2027 | 2027-08-02 to 2027-08-06 | Tucson AZ USA | notified 2026-06-22
 - `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
+- `59c356287e13f938` | IAU Symposium 414: High-z Galaxies and Black Holes: The JWST/ALMA/GRAVITY Frontier | 2027-10-11 to 2027-10-15 | Puerto Natales, Chile | notified 2026-07-06
 - `6aca46cb69c0aac8` | Galaxy nuclei – Diversity, Dynamics, and Hidden Mass in Galactic Centers | 2026-11-16 to 2026-11-20 | ESO Santiago, Chile | notified 2026-05-11
 - `7732d89c3acd56ea` | LSST@Asia 2027 | 2027-04-19 to 2027-04-23 | Seoul, South Korea | notified 2026-06-15
 - `7af9fee9424d2ee6` | MATISSE Science Days | 2026-09-29 to 2026-10-02 | Budapest, Hungary | notified 2026-06-17
