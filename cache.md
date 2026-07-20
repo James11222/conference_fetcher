@@ -3,6 +3,7 @@
 Conferences listed here have already been included in an email notification.
 
 - `05a244637bde8696` | AGN Jets from Gamsberg to the Multi-Messenger Frontier | 2027-01-18 to 2027-01-22 | Windhoek, Namibia | notified 2026-06-29
+- `05af32a473a2c94f` | ASI Symposium 008: The Dynamic Radio Sky | 2026-10-23 to 2026-10-25 | IIT Kanpur, UP, India | notified 2026-07-20
 - `063496d23584784d` | COSMOGOLD IAP 2026 | 2026-12-14 to 2026-12-18 | IAP, Paris, France | notified 2026-07-06
 - `0bcaebac926f9a60` | Rubin Community Workshop 2027 | 2027-08-02 to 2027-08-06 | Tucson AZ USA | notified 2026-06-22
 - `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
@@ -19,6 +20,7 @@ Conferences listed here have already been included in an email notification.
 - `a39694b89ab5ed06` | EAS 2027 | 2027-06-21 to 2027-06-25 | Vienna, Austria | notified 2026-07-13
 - `b47b7876716a1753` | A new window into the innermost regions of accreting massive black holes | 2027-04-04 to 2027-04-09 | Ascona, Switzerland | notified 2026-05-25
 - `c81944bc85e52e9b` | Little Red Dots 2026 | 2026-06-22 to 2026-06-24 | online | notified 2026-05-08
+- `ce23b50288229947` | IAU ECRWG Conference — Synergies between Observational and Theoretical Astronomy: Results, Challenges and Future Prospects | 2026-11-17 to 2026-11-19 | Virtual | notified 2026-07-20
 - `cfa906b2a2832b5f` | Deepdish-Baguette: Stars, Black Holes, and Feedback From Cosmic Dawn to Cosmic Noon | 2027-04-12 to 2027-04-16 | Paris, France | notified 2026-06-15
 - `d2a9156d1f21c73b` | Simulations of Galaxy Evolution: Advancements, Revolutions and Struggles (Simulations GEARS) | 2026-11-02 to 2026-11-06 | Kashiwanoha, Tokyo, Japan | notified 2026-06-15
 - `d5412a60681ab597` | Surveying the Universe in 4D: Beating Cosmic Variance with Wide-Field Slitless Spectroscopy from HST, JWST, Euclid, Roman, and Beyond | 2026-08-24 to 2026-08-28 | Space Telescope Science Institute | notified 2026-05-08
