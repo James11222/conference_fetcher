@@ -26,3 +26,4 @@ Conferences listed here have already been included in an email notification.
 - `d5412a60681ab597` | Surveying the Universe in 4D: Beating Cosmic Variance with Wide-Field Slitless Spectroscopy from HST, JWST, Euclid, Roman, and Beyond | 2026-08-24 to 2026-08-28 | Space Telescope Science Institute | notified 2026-05-08
 - `d57bd992b58b5406` | Probe Combination for Dark Matter Physics in the Era of Large Surveys | 2026-09-02 to 2026-09-04 | Chicago, IL | notified 2026-06-29
 - `e611e6b5fc4ddbc7` | SPARCS XIV: The SKAO Awakens (SKA Pathfinder and Radio Continuum Surveys conference) | 2026-10-19 to 2026-10-23 | Seoul, South Korea | notified 2026-05-11
+- `ee96548478914d9f` | The 8th International Conference on Particle Physics and Astrophysics (ICPPA-2026) | 2026-10-27 to 2026-10-30 | Sevastopol Hotel Complex, 1A Bolshaya Yushunskaya Street, Moscow, Russia | notified 2026-07-27
