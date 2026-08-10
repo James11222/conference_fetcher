@@ -8,18 +8,56 @@ from dataclasses import replace
 
 from .models import ConferenceEntry
 
+_COPILOT_TOKEN_URL = "https://api.github.com/copilot_internal/v2/token"
+_COPILOT_CHAT_URL = "https://api.githubcopilot.com/chat/completions"
+_EDITOR_VERSION = "vscode/1.107.0"
+_USER_AGENT = "GitHubCopilotChat/0.35.0"
+_EDITOR_PLUGIN_VERSION = "copilot-chat/0.35.0"
+_COPILOT_INTEGRATION_ID = "vscode-chat"
+
 
 class LLMClient:
     def select_conferences(self, entries: list[ConferenceEntry], preferences: str) -> list[ConferenceEntry]:
         raise NotImplementedError
 
 
-class GitHubModelsLLMClient(LLMClient):
-    def __init__(self, token: str, model: str = "openai/gpt-4.1") -> None:
+class GitHubCopilotLLMClient(LLMClient):
+    def __init__(self, token: str, model: str = "gpt-4.1") -> None:
         self.token = token
         self.model = model
 
+    def _get_copilot_token(self) -> str:
+        request = urllib.request.Request(
+            _COPILOT_TOKEN_URL,
+            headers={
+                "Accept": "application/json",
+                "Authorization": "Bearer " + self.token,
+                "Editor-Version": _EDITOR_VERSION,
+                "Editor-Plugin-Version": _EDITOR_PLUGIN_VERSION,
+                "User-Agent": _USER_AGENT,
+                "Copilot-Integration-Id": _COPILOT_INTEGRATION_ID,
+            },
+            method="GET",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                body = json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as error:
+            if error.code in {401, 403}:
+                raise RuntimeError(
+                    "GitHub Copilot token exchange was unauthorized. "
+                    "Ensure the token has copilot-requests:write access."
+                ) from error
+            raise
+        except json.JSONDecodeError as error:
+            raise RuntimeError("Copilot token exchange returned invalid JSON.") from error
+        copilot_token = str(body.get("token") or "").strip()
+        if not copilot_token:
+            raise RuntimeError("Copilot token exchange returned an empty token.")
+        return copilot_token
+
     def select_conferences(self, entries: list[ConferenceEntry], preferences: str) -> list[ConferenceEntry]:
+        copilot_token = self._get_copilot_token()
         payload = {
             "model": self.model,
             "messages": [{"role": "user", "content": _build_prompt(entries, preferences)}],
@@ -27,13 +65,16 @@ class GitHubModelsLLMClient(LLMClient):
             "temperature": 0.1,
         }
         request = urllib.request.Request(
-            "https://models.github.ai/inference/chat/completions",
+            _COPILOT_CHAT_URL,
             data=json.dumps(payload).encode("utf-8"),
             headers={
-                "accept": "application/vnd.github+json",
-                "content-type": "application/json",
-                "authorization": f"Bearer {self.token}",
-                "x-github-api-version": "2022-11-28",
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + copilot_token,
+                "Editor-Version": _EDITOR_VERSION,
+                "Editor-Plugin-Version": _EDITOR_PLUGIN_VERSION,
+                "User-Agent": _USER_AGENT,
+                "Copilot-Integration-Id": _COPILOT_INTEGRATION_ID,
             },
             method="POST",
         )
@@ -43,19 +84,24 @@ class GitHubModelsLLMClient(LLMClient):
         except urllib.error.HTTPError as error:
             if error.code in {401, 403}:
                 raise RuntimeError(
-                    "GitHub Models request was unauthorized. Ensure the token has models:read access."
+                    "GitHub Copilot request was unauthorized. "
+                    "Ensure the token has copilot-requests:write access."
                 ) from error
             raise
         text = body["choices"][0]["message"]["content"]
         return _selected_entries_from_response(entries, text)
 
 
+# Keep the old name as an alias for backwards compatibility.
+GitHubModelsLLMClient = GitHubCopilotLLMClient
+
+
 def create_llm_client_from_env() -> LLMClient:
     token = (os.environ.get("GH_TOKEN") or "").strip()
     if not token:
         raise ValueError("Set GH_TOKEN before running the pipeline.")
-    model = (os.environ.get("GH_MODEL") or "openai/gpt-4.1").strip()
-    return GitHubModelsLLMClient(token, model)
+    model = (os.environ.get("GH_MODEL") or "gpt-4.1").strip()
+    return GitHubCopilotLLMClient(token, model)
 
 
 def _build_prompt(entries: list[ConferenceEntry], preferences: str) -> str:
