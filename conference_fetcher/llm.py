@@ -4,6 +4,7 @@ import json
 import os
 import urllib.error
 import urllib.request
+import warnings
 from dataclasses import replace
 
 from .models import ConferenceEntry
@@ -48,6 +49,16 @@ class GitHubCopilotLLMClient(LLMClient):
                     "GitHub Copilot token exchange was unauthorized. "
                     "Ensure the token has copilot-requests:write access."
                 ) from error
+            if error.code == 404:
+                # The token exchange endpoint is only available for OAuth user tokens.
+                # GitHub Actions GITHUB_TOKEN (and other installation tokens) can be
+                # used directly as a bearer token against the Copilot API.
+                warnings.warn(
+                    "Copilot token exchange returned 404; using the provided token directly. "
+                    "This is expected when using a GitHub Actions GITHUB_TOKEN.",
+                    stacklevel=2,
+                )
+                return self.token
             raise
         except json.JSONDecodeError as error:
             raise RuntimeError("Copilot token exchange returned invalid JSON.") from error
