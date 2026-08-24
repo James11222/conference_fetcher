@@ -184,7 +184,7 @@ class _PreferenceMatcher:
         negative_matches = sorted({term for term in self.negative_terms if term in haystack})
         if not positive_matches:
             return None
-        if len(negative_matches) > len(positive_matches):
+        if negative_matches and len(positive_matches) <= len(negative_matches):
             return None
         summary = ", ".join(positive_matches[:3])
         if negative_matches:

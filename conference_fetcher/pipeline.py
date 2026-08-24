@@ -75,6 +75,8 @@ def run_pipeline(
         try:
             selected_entries = llm_client.select_conferences(unseen_entries, preferences)
         except Exception as error:
+            if isinstance(llm_client, LocalPreferenceLLMClient):
+                raise
             print(f"LLM selection failed ({error}); using local preference fallback.")
             selected_entries = LocalPreferenceLLMClient().select_conferences(unseen_entries, preferences)
     if selected_entries:
