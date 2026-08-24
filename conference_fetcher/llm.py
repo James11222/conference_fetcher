@@ -91,11 +91,11 @@ class GitHubCopilotLLMClient(LLMClient):
                     "Ensure the token has copilot-requests:write access."
                 ) from error
             if error.code == 400:
-                body = error.read().decode("utf-8", errors="replace")
+                error_body = error.read().decode("utf-8", errors="replace")
                 raise RuntimeError(
                     f"GitHub Copilot request was rejected (HTTP 400). "
                     f"The model '{self.model}' may be invalid or unsupported. "
-                    f"Response: {body}"
+                    f"Response: {error_body}"
                 ) from error
             raise
         text = body["choices"][0]["message"]["content"]
