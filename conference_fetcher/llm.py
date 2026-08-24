@@ -22,7 +22,7 @@ class LLMClient:
 
 
 class GitHubCopilotLLMClient(LLMClient):
-    def __init__(self, token: str, model: str = "gpt-4.1") -> None:
+    def __init__(self, token: str, model: str = "openai/gpt-4.1") -> None:
         self.token = token
         self.model = model
 
@@ -104,7 +104,7 @@ def create_llm_client_from_env() -> LLMClient:
     token = (os.environ.get("GH_TOKEN") or "").strip()
     if not token:
         raise ValueError("Set GH_TOKEN before running the pipeline.")
-    model = (os.environ.get("GH_MODEL") or "gpt-4.1").strip()
+    model = (os.environ.get("GH_MODEL") or "openai/gpt-4.1").strip()
     return GitHubCopilotLLMClient(token, model)
 
 
