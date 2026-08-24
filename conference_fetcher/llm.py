@@ -65,7 +65,6 @@ class GitHubCopilotLLMClient(LLMClient):
         payload = {
             "model": self.model,
             "messages": [{"role": "user", "content": _build_prompt(entries, preferences)}],
-            "response_format": {"type": "json_object"},
             "temperature": 0.1,
         }
         request = urllib.request.Request(
