@@ -6,7 +6,8 @@ Automates a weekly conference digest for the CADC recent meetings page.
 
 - Scrapes `https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/en/meetings/recent/`
 - Reads filtering preferences from `preferences.md`
-- Uses GitHub-hosted models to shortlist conference entries
+- Uses GitHub Copilot when available to shortlist conference entries
+- Falls back to local preference matching if the Copilot request fails
 - Avoids duplicate notifications by tracking previously emailed entries in `cache.md`
 - Sends a weekly email summary on Monday mornings at 10:00 UTC through GitHub Actions
 
@@ -17,16 +18,15 @@ Automates a weekly conference digest for the CADC recent meetings page.
 - `conference_fetcher/`: Python pipeline code
 - `.github/workflows/weekly_conference_digest.yml`: weekly automation
 
-## GitHub Copilot / GitHub Models setup
+## GitHub Copilot setup
 
 Optional model variable:
 
-- `GH_MODEL` (defaults to `openai/gpt-4.1`)
+- `GH_MODEL` (defaults to `gpt-5-mini`)
 
-Required workflow permissions and variables:
+Optional secret:
 
-- `models: read` permission for the workflow token
-- `GH_MODEL` (optional repository variable)
+- `COPILOT_TOKEN` (a PAT with Copilot access; if missing or rejected, the workflow falls back to local preference matching)
 
 Required secrets/variables for GitHub Actions:
 
@@ -37,7 +37,7 @@ Required secrets/variables for GitHub Actions:
 - `SMTP_FROM`
 - `SMTP_TO`
 
-The workflow maps the built-in `secrets.GITHUB_TOKEN` into `GH_TOKEN` for GitHub-hosted inference requests, so no custom model token secret is required.
+The workflow maps `secrets.COPILOT_TOKEN` into `GH_TOKEN` for Copilot requests. If that token is unavailable or GitHub changes the Copilot endpoint again, the pipeline still completes by using the deterministic local fallback.
 
 ## Email configuration
 

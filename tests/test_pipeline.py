@@ -21,6 +21,11 @@ class StaticLLMClient(LLMClient):
         ]
 
 
+class FailingLLMClient(LLMClient):
+    def select_conferences(self, entries, preferences):
+        raise RuntimeError("GitHub Copilot request was rejected (HTTP 404).")
+
+
 class PipelineTests(unittest.TestCase):
     def test_create_llm_client_uses_github_copilot_configuration(self) -> None:
         with patch.dict(
@@ -148,6 +153,72 @@ class PipelineTests(unittest.TestCase):
             text_body, html_body = sent_messages[0]
             self.assertIn("There are no new conferences", text_body)
             self.assertIn("No new conferences this week", html_body)
+
+    def test_run_pipeline_falls_back_to_local_preferences_when_llm_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            (root / "preferences.md").write_text(
+                "# Conference preferences\n\n"
+                "I'm interested in the following topics\n"
+                "- Cosmology\n"
+                "- Machine learning in the context of astronomy and cosmology\n\n"
+                "I am not interested in conferences on the following topics\n"
+                "- exoplanets\n",
+                encoding="utf-8",
+            )
+            config = PipelineConfig(
+                repo_root=root,
+                preferences_path=root / "preferences.md",
+                cache_path=root / "cache.md",
+                smtp_host="smtp.example.com",
+                smtp_port=587,
+                smtp_username="user",
+                smtp_password="pass",
+                smtp_from="from@example.com",
+                smtp_to="to@example.com",
+            )
+            json_data = [
+                {
+                    "title": "Cosmology and machine learning workshop",
+                    "start": "2026-07-10",
+                    "end": "2026-07-12",
+                    "location": "Montreal, Canada",
+                    "web1": "https://example.com/cosmology-ml",
+                    "web2": "",
+                    "contact": "",
+                    "email": "",
+                    "keywords": "cosmology, machine learning",
+                },
+                {
+                    "title": "Exoplanet atmospheres summit",
+                    "start": "2026-08-02",
+                    "end": "2026-08-05",
+                    "location": "Berlin, Germany",
+                    "web1": "https://example.com/exoplanets",
+                    "web2": "",
+                    "contact": "",
+                    "email": "",
+                    "keywords": "exoplanets",
+                },
+            ]
+            sent_messages = []
+
+            selected = run_pipeline(
+                config=config,
+                llm_client=FailingLLMClient(),
+                fetch_data=lambda: json_data,
+                email_sender=lambda _config, text_body, html_body: sent_messages.append((text_body, html_body)),
+                now=datetime(2026, 5, 8, tzinfo=timezone.utc),
+            )
+
+            self.assertEqual([entry.title for entry in selected], ["Cosmology and machine learning workshop"])
+            self.assertIn("Fallback preference match", selected[0].llm_reason)
+            self.assertEqual(len(sent_messages), 1)
+            text_body, html_body = sent_messages[0]
+            self.assertIn("Cosmology and machine learning workshop", text_body)
+            self.assertNotIn("Exoplanet atmospheres summit", text_body)
+            self.assertIn("Cosmology and machine learning workshop", html_body)
+            self.assertEqual(len(read_cache(config.cache_path)), 1)
 
     def test_format_email_uses_fallback_text_for_missing_fields(self) -> None:
         body = format_email([])
