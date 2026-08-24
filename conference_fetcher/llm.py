@@ -46,12 +46,8 @@ class GitHubCopilotLLMClient(LLMClient):
             if error.code in {401, 403}:
                 raise RuntimeError(
                     "GitHub Copilot token exchange was unauthorized. "
-                    "Ensure the token has copilot-requests:write access."
+                    "Ensure the COPILOT_TOKEN secret is a valid PAT with Copilot access."
                 ) from error
-            if error.code == 404:
-                # The token exchange endpoint is not available for this token type
-                # (e.g. GitHub Actions GITHUB_TOKEN). Fall back to using the token directly.
-                return self.token
             raise
         except json.JSONDecodeError as error:
             raise RuntimeError("Copilot token exchange returned invalid JSON.") from error
@@ -88,7 +84,7 @@ class GitHubCopilotLLMClient(LLMClient):
             if error.code in {401, 403}:
                 raise RuntimeError(
                     "GitHub Copilot request was unauthorized. "
-                    "Ensure the token has copilot-requests:write access."
+                    "Ensure the COPILOT_TOKEN secret is a valid PAT with Copilot access."
                 ) from error
             if error.code == 400:
                 error_body = error.read().decode("utf-8", errors="replace")
