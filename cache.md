@@ -2,6 +2,7 @@
 
 Conferences listed here have already been included in an email notification.
 
+- `025c1f0c8f9fa556` | Celebrating Georges Lemaître groundbreaking contributions to cosmology and modern science | 2027-09-21 to 2027-09-22 | Évora, Portugal | notified 2026-08-24
 - `05a244637bde8696` | AGN Jets from Gamsberg to the Multi-Messenger Frontier | 2027-01-18 to 2027-01-22 | Windhoek, Namibia | notified 2026-06-29
 - `05af32a473a2c94f` | ASI Symposium 008: The Dynamic Radio Sky | 2026-10-23 to 2026-10-25 | IIT Kanpur, UP, India | notified 2026-07-20
 - `063496d23584784d` | COSMOGOLD IAP 2026 | 2026-12-14 to 2026-12-18 | IAP, Paris, France | notified 2026-07-06
@@ -11,12 +12,16 @@ Conferences listed here have already been included in an email notification.
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
 - `59c356287e13f938` | IAU Symposium 414: High-z Galaxies and Black Holes: The JWST/ALMA/GRAVITY Frontier | 2027-10-11 to 2027-10-15 | Puerto Natales, Chile | notified 2026-07-06
 - `6aca46cb69c0aac8` | Galaxy nuclei – Diversity, Dynamics, and Hidden Mass in Galactic Centers | 2026-11-16 to 2026-11-20 | ESO Santiago, Chile | notified 2026-05-11
+- `72219b2bc4588924` | The Super Conference: Super-Eddington Accretion onto Super-Massive Black Holes | 2027-03-08 to 2027-03-12 | Sexten Center for Astrophysics | notified 2026-08-24
 - `7732d89c3acd56ea` | LSST@Asia 2027 | 2027-04-19 to 2027-04-23 | Seoul, South Korea | notified 2026-06-15
 - `7af9fee9424d2ee6` | MATISSE Science Days | 2026-09-29 to 2026-10-02 | Budapest, Hungary | notified 2026-06-17
 - `7ffa9ff617350ec0` | Open SkAI 2026: Annual Astronomy & AI Conference at SkAI | 2026-09-08 to 2026-09-11 | NSF-Simons AI Institute for the Sky (SkAI), Chicago, USA | notified 2026-05-08
+- `8315e30203dcb483` | Simulation-Driven Cosmology and Large-Scale Structure: Emulators, Fields, and Galaxy Catalogs | 2027-03-01 to 2027-03-05 | Shanghai, China | notified 2026-08-24
 - `8ac28b41a2be1411` | 12th KIAS Workshop on Cosmology and Structure Formation | 2026-11-01 to 2026-11-07 | Korea Institute for Advanced Study (KIAS), Seoul, Republic of Korea | notified 2026-06-08
 - `8d1a1553f10e1b89` | INTEGRAL Legacy Conference 2026 | 2026-10-19 to 2026-10-23 | Paris, France | notified 2026-05-18
+- `9414e9270853ebc0` | Lighting up the Dark — Understanding Dark Matter from Particles to Galaxies | 2027-03-22 to 2027-03-26 | Sport & Kurhotel at Bad Moos, Sexten, Italy | notified 2026-08-24
 - `98f84bc1953f8df8` | Vera C. Rubin Observatory Community Workshop 2026 | 2026-07-27 to 2026-07-31 | SLAC Menlo Park | notified 2026-06-22
+- `9df2d69992ae404c` | 30 Years of STIS and the Future of UV Astronomy | 2027-03-17 to 2027-03-19 | Space Telescope Science Institute | notified 2026-08-24
 - `a39694b89ab5ed06` | EAS 2027 | 2027-06-21 to 2027-06-25 | Vienna, Austria | notified 2026-07-13
 - `b47b7876716a1753` | A new window into the innermost regions of accreting massive black holes | 2027-04-04 to 2027-04-09 | Ascona, Switzerland | notified 2026-05-25
 - `c81944bc85e52e9b` | Little Red Dots 2026 | 2026-06-22 to 2026-06-24 | online | notified 2026-05-08
@@ -27,3 +32,4 @@ Conferences listed here have already been included in an email notification.
 - `d57bd992b58b5406` | Probe Combination for Dark Matter Physics in the Era of Large Surveys | 2026-09-02 to 2026-09-04 | Chicago, IL | notified 2026-06-29
 - `e611e6b5fc4ddbc7` | SPARCS XIV: The SKAO Awakens (SKA Pathfinder and Radio Continuum Surveys conference) | 2026-10-19 to 2026-10-23 | Seoul, South Korea | notified 2026-05-11
 - `ee96548478914d9f` | The 8th International Conference on Particle Physics and Astrophysics (ICPPA-2026) | 2026-10-27 to 2026-10-30 | Sevastopol Hotel Complex, 1A Bolshaya Yushunskaya Street, Moscow, Russia | notified 2026-07-27
+- `f5d21da39761baf2` | 12th Annual Science at Low Frequencies (SALF XII) conference - 2026 | 2026-12-07 to 2026-12-10 | Tempe, Arizona, USA | notified 2026-08-24
