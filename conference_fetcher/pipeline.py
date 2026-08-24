@@ -10,7 +10,7 @@ from email.mime.text import MIMEText
 from pathlib import Path
 from typing import Callable
 
-from .llm import LLMClient, create_llm_client_from_env
+from .llm import LLMClient, LocalPreferenceLLMClient, create_llm_client_from_env
 from .models import ConferenceEntry
 from .scraper import fetch_recent_meetings, parse_recent_meetings
 
@@ -53,7 +53,12 @@ def run_pipeline(
     now: datetime | None = None,
 ) -> list[ConferenceEntry]:
     config = config or PipelineConfig.from_env()
-    llm_client = llm_client or create_llm_client_from_env()
+    if llm_client is None:
+        try:
+            llm_client = create_llm_client_from_env()
+        except ValueError as error:
+            print(f"LLM configuration unavailable ({error}); using local preference fallback.")
+            llm_client = LocalPreferenceLLMClient()
     fetch_data = fetch_data or fetch_recent_meetings
     email_sender = email_sender or send_email
     current_time = now or datetime.now(timezone.utc)
@@ -65,7 +70,13 @@ def run_pipeline(
     unseen_entries = [entry for entry in parsed_entries if entry.cache_key not in cached_ids]
     print("Pre-LLM sort: ")
     print(unseen_entries)
-    selected_entries = llm_client.select_conferences(unseen_entries, preferences) if unseen_entries else []
+    selected_entries: list[ConferenceEntry] = []
+    if unseen_entries:
+        try:
+            selected_entries = llm_client.select_conferences(unseen_entries, preferences)
+        except Exception as error:
+            print(f"LLM selection failed ({error}); using local preference fallback.")
+            selected_entries = LocalPreferenceLLMClient().select_conferences(unseen_entries, preferences)
     if selected_entries:
         # show that the entries were successfully found
         print(selected_entries)

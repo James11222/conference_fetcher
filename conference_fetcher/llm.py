@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import urllib.error
 import urllib.request
 from dataclasses import replace
@@ -19,6 +20,17 @@ _COPILOT_INTEGRATION_ID = "vscode-chat"
 class LLMClient:
     def select_conferences(self, entries: list[ConferenceEntry], preferences: str) -> list[ConferenceEntry]:
         raise NotImplementedError
+
+
+class LocalPreferenceLLMClient(LLMClient):
+    def select_conferences(self, entries: list[ConferenceEntry], preferences: str) -> list[ConferenceEntry]:
+        matcher = _PreferenceMatcher(preferences)
+        selected: list[ConferenceEntry] = []
+        for entry in entries:
+            decision = matcher.match(entry)
+            if decision:
+                selected.append(replace(entry, llm_reason=decision))
+        return selected
 
 
 class GitHubCopilotLLMClient(LLMClient):
@@ -160,3 +172,56 @@ def _extract_json_object(text: str) -> dict:
     if start == -1 or end == -1 or end < start:
         raise ValueError("LLM response did not contain a JSON object")
     return json.loads(stripped[start : end + 1])
+
+
+class _PreferenceMatcher:
+    def __init__(self, preferences: str) -> None:
+        self.positive_terms, self.negative_terms = _parse_preference_terms(preferences)
+
+    def match(self, entry: ConferenceEntry) -> str | None:
+        haystack = _normalize_text("\n".join([entry.title, entry.location, entry.details]))
+        positive_matches = sorted({term for term in self.positive_terms if term in haystack})
+        negative_matches = sorted({term for term in self.negative_terms if term in haystack})
+        if not positive_matches:
+            return None
+        if len(negative_matches) > len(positive_matches):
+            return None
+        summary = ", ".join(positive_matches[:3])
+        if negative_matches:
+            return f"Fallback preference match: {summary} outweighed excluded topics."
+        return f"Fallback preference match: {summary}."
+
+
+def _parse_preference_terms(preferences: str) -> tuple[set[str], set[str]]:
+    positive_terms: set[str] = set()
+    negative_terms: set[str] = set()
+    target = positive_terms
+    for raw_line in preferences.splitlines():
+        line = raw_line.strip()
+        lowered = line.lower()
+        if "not interested" in lowered:
+            target = negative_terms
+            continue
+        if not line.startswith("- "):
+            continue
+        for term in _terms_from_preference_line(line[2:]):
+            target.add(term)
+    return positive_terms, negative_terms
+
+
+def _terms_from_preference_line(line: str) -> set[str]:
+    normalized = _normalize_text(line)
+    terms = {normalized} if normalized else set()
+    words = [word for word in normalized.split() if len(word) >= 4]
+    for size in (1, 2):
+        for index in range(len(words) - size + 1):
+            phrase = " ".join(words[index : index + size])
+            if phrase:
+                terms.add(phrase)
+    return terms
+
+
+def _normalize_text(value: str) -> str:
+    lowered = value.lower().replace("&", " and ")
+    cleaned = re.sub(r"[^a-z0-9]+", " ", lowered)
+    return " ".join(cleaned.split())
