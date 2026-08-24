@@ -22,7 +22,7 @@ class LLMClient:
 
 
 class GitHubCopilotLLMClient(LLMClient):
-    def __init__(self, token: str, model: str = "openai/gpt-4.1") -> None:
+    def __init__(self, token: str, model: str = "gpt-5-mini") -> None:
         self.token = token
         self.model = model
 
@@ -90,6 +90,13 @@ class GitHubCopilotLLMClient(LLMClient):
                     "GitHub Copilot request was unauthorized. "
                     "Ensure the token has copilot-requests:write access."
                 ) from error
+            if error.code == 400:
+                error_body = error.read().decode("utf-8", errors="replace")
+                raise RuntimeError(
+                    f"GitHub Copilot request was rejected (HTTP 400). "
+                    f"The model '{self.model}' may be invalid or unsupported. "
+                    f"Response: {error_body}"
+                ) from error
             raise
         text = body["choices"][0]["message"]["content"]
         return _selected_entries_from_response(entries, text)
@@ -103,7 +110,7 @@ def create_llm_client_from_env() -> LLMClient:
     token = (os.environ.get("GH_TOKEN") or "").strip()
     if not token:
         raise ValueError("Set GH_TOKEN before running the pipeline.")
-    model = (os.environ.get("GH_MODEL") or "openai/gpt-4.1").strip()
+    model = (os.environ.get("GH_MODEL") or "gpt-5-mini").strip()
     return GitHubCopilotLLMClient(token, model)
 
 
