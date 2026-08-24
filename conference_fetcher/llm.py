@@ -8,12 +8,7 @@ from dataclasses import replace
 
 from .models import ConferenceEntry
 
-_COPILOT_TOKEN_URL = "https://api.github.com/copilot_internal/v2/token"
-_COPILOT_CHAT_URL = "https://api.githubcopilot.com/chat/completions"
-_EDITOR_VERSION = "vscode/1.107.0"
-_USER_AGENT = "GitHubCopilotChat/0.35.0"
-_EDITOR_PLUGIN_VERSION = "copilot-chat/0.35.0"
-_COPILOT_INTEGRATION_ID = "vscode-chat"
+_GITHUB_MODELS_URL = "https://models.inference.ai.azure.com/chat/completions"
 
 
 class LLMClient:
@@ -22,62 +17,23 @@ class LLMClient:
 
 
 class GitHubCopilotLLMClient(LLMClient):
-    def __init__(self, token: str, model: str = "gpt-5-mini") -> None:
+    def __init__(self, token: str, model: str = "gpt-4o-mini") -> None:
         self.token = token
         self.model = model
 
-    def _get_copilot_token(self) -> str:
-        request = urllib.request.Request(
-            _COPILOT_TOKEN_URL,
-            headers={
-                "Accept": "application/json",
-                "Authorization": "Bearer " + self.token,
-                "Editor-Version": _EDITOR_VERSION,
-                "Editor-Plugin-Version": _EDITOR_PLUGIN_VERSION,
-                "User-Agent": _USER_AGENT,
-                "Copilot-Integration-Id": _COPILOT_INTEGRATION_ID,
-            },
-            method="GET",
-        )
-        try:
-            with urllib.request.urlopen(request, timeout=30) as response:
-                body = json.loads(response.read().decode("utf-8"))
-        except urllib.error.HTTPError as error:
-            if error.code in {401, 403}:
-                raise RuntimeError(
-                    "GitHub Copilot token exchange was unauthorized. "
-                    "Ensure the token has copilot-requests:write access."
-                ) from error
-            if error.code == 404:
-                # The token exchange endpoint is not available for this token type
-                # (e.g. GitHub Actions GITHUB_TOKEN). Fall back to using the token directly.
-                return self.token
-            raise
-        except json.JSONDecodeError as error:
-            raise RuntimeError("Copilot token exchange returned invalid JSON.") from error
-        copilot_token = str(body.get("token") or "").strip()
-        if not copilot_token:
-            raise RuntimeError("Copilot token exchange returned an empty token.")
-        return copilot_token
-
     def select_conferences(self, entries: list[ConferenceEntry], preferences: str) -> list[ConferenceEntry]:
-        copilot_token = self._get_copilot_token()
         payload = {
             "model": self.model,
             "messages": [{"role": "user", "content": _build_prompt(entries, preferences)}],
             "temperature": 0.1,
         }
         request = urllib.request.Request(
-            _COPILOT_CHAT_URL,
+            _GITHUB_MODELS_URL,
             data=json.dumps(payload).encode("utf-8"),
             headers={
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + copilot_token,
-                "Editor-Version": _EDITOR_VERSION,
-                "Editor-Plugin-Version": _EDITOR_PLUGIN_VERSION,
-                "User-Agent": _USER_AGENT,
-                "Copilot-Integration-Id": _COPILOT_INTEGRATION_ID,
+                "Authorization": "Bearer " + self.token,
             },
             method="POST",
         )
@@ -87,13 +43,13 @@ class GitHubCopilotLLMClient(LLMClient):
         except urllib.error.HTTPError as error:
             if error.code in {401, 403}:
                 raise RuntimeError(
-                    "GitHub Copilot request was unauthorized. "
-                    "Ensure the token has copilot-requests:write access."
+                    "GitHub Models request was unauthorized. "
+                    "Ensure the token has models:read access."
                 ) from error
             if error.code == 400:
                 error_body = error.read().decode("utf-8", errors="replace")
                 raise RuntimeError(
-                    f"GitHub Copilot request was rejected (HTTP 400). "
+                    f"GitHub Models request was rejected (HTTP 400). "
                     f"The model '{self.model}' may be invalid or unsupported. "
                     f"Response: {error_body}"
                 ) from error
@@ -110,7 +66,7 @@ def create_llm_client_from_env() -> LLMClient:
     token = (os.environ.get("GH_TOKEN") or "").strip()
     if not token:
         raise ValueError("Set GH_TOKEN before running the pipeline.")
-    model = (os.environ.get("GH_MODEL") or "gpt-5-mini").strip()
+    model = (os.environ.get("GH_MODEL") or "gpt-4o-mini").strip()
     return GitHubCopilotLLMClient(token, model)
 
 

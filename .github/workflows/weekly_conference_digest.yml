@@ -10,7 +10,7 @@ on:
 
 permissions:
   contents: write
-  copilot-requests: write
+  models: read
 
 jobs:
   digest:
