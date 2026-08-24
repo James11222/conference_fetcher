@@ -48,6 +48,10 @@ class GitHubCopilotLLMClient(LLMClient):
                     "GitHub Copilot token exchange was unauthorized. "
                     "Ensure the token has copilot-requests:write access."
                 ) from error
+            if error.code == 404:
+                # The token exchange endpoint is not available for this token type
+                # (e.g. GitHub Actions GITHUB_TOKEN). Fall back to using the token directly.
+                return self.token
             raise
         except json.JSONDecodeError as error:
             raise RuntimeError("Copilot token exchange returned invalid JSON.") from error
