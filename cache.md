@@ -24,6 +24,7 @@ Conferences listed here have already been included in an email notification.
 - `9df2d69992ae404c` | 30 Years of STIS and the Future of UV Astronomy | 2027-03-17 to 2027-03-19 | Space Telescope Science Institute | notified 2026-08-24
 - `a39694b89ab5ed06` | EAS 2027 | 2027-06-21 to 2027-06-25 | Vienna, Austria | notified 2026-07-13
 - `b47b7876716a1753` | A new window into the innermost regions of accreting massive black holes | 2027-04-04 to 2027-04-09 | Ascona, Switzerland | notified 2026-05-25
+- `c0767f6409e192cb` | Innovative Research and Techniques in Astronomy Communication | 2026-11-02 to 2026-11-06 | Tokyo (and online) | notified 2026-09-07
 - `c81944bc85e52e9b` | Little Red Dots 2026 | 2026-06-22 to 2026-06-24 | online | notified 2026-05-08
 - `ce23b50288229947` | IAU ECRWG Conference — Synergies between Observational and Theoretical Astronomy: Results, Challenges and Future Prospects | 2026-11-17 to 2026-11-19 | Virtual | notified 2026-07-20
 - `cfa906b2a2832b5f` | Deepdish-Baguette: Stars, Black Holes, and Feedback From Cosmic Dawn to Cosmic Noon | 2027-04-12 to 2027-04-16 | Paris, France | notified 2026-06-15
@@ -33,3 +34,4 @@ Conferences listed here have already been included in an email notification.
 - `e611e6b5fc4ddbc7` | SPARCS XIV: The SKAO Awakens (SKA Pathfinder and Radio Continuum Surveys conference) | 2026-10-19 to 2026-10-23 | Seoul, South Korea | notified 2026-05-11
 - `ee96548478914d9f` | The 8th International Conference on Particle Physics and Astrophysics (ICPPA-2026) | 2026-10-27 to 2026-10-30 | Sevastopol Hotel Complex, 1A Bolshaya Yushunskaya Street, Moscow, Russia | notified 2026-07-27
 - `f5d21da39761baf2` | 12th Annual Science at Low Frequencies (SALF XII) conference - 2026 | 2026-12-07 to 2026-12-10 | Tempe, Arizona, USA | notified 2026-08-24
+- `fa2b206a8d3adde7` | Quasars and AGN: past, present, and future | 2027-09-06 to 2027-09-10 | Institute of Astronomy, University of Cambridge, UK | notified 2026-09-07
