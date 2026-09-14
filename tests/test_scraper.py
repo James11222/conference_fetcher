@@ -102,3 +102,34 @@ class ScraperTests(unittest.TestCase):
         self.assertEqual(len(entries), 1)
         self.assertEqual(entries[0].title, "Valid Conference")
 
+    def test_parse_recent_meetings_reads_wrapped_payload_from_unknown_key(self) -> None:
+        data = {
+            "status": "ok",
+            "payload": [
+                {
+                    "title": "Wrapped Payload Conference",
+                    "start": "2026-10-01",
+                    "end": "2026-10-02",
+                    "location": "Toronto, Canada",
+                    "web1": "https://example.com/wrapped",
+                }
+            ]
+        }
+
+        entries = parse_recent_meetings(data)
+
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0].title, "Wrapped Payload Conference")
+        self.assertEqual(entries[0].url, "https://example.com/wrapped")
+
+    def test_parse_recent_meetings_ignores_non_mapping_items(self) -> None:
+        data = [
+            "meetings",
+            {"title": "Valid Conference", "start": "2026-03-01", "end": "2026-03-03", "location": "Paris"},
+            42,
+        ]
+
+        entries = parse_recent_meetings(data)
+
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0].title, "Valid Conference")
