@@ -3,22 +3,22 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable, Mapping
 from html import unescape
-from typing import Any
 
 import requests
 
 from .models import ConferenceEntry
 
 MEETINGS_API_URL = "https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/meetings/meetings?days=21"
+JSONData = dict[str, object] | list[object] | str | int | float | bool | None
 
 
-def fetch_recent_meetings() -> Any:
+def fetch_recent_meetings() -> JSONData:
     response = requests.get(MEETINGS_API_URL, timeout=30)
     response.raise_for_status()
     return response.json()
 
 
-def parse_recent_meetings(data: Any) -> list[ConferenceEntry]:
+def parse_recent_meetings(data: JSONData) -> list[ConferenceEntry]:
     meetings = _extract_meetings(data)
     return [entry for entry in (_build_entry(meeting) for meeting in meetings) if entry]
 
