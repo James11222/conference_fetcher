@@ -28,12 +28,18 @@ def _extract_meetings(data: object) -> list[Mapping[str, object]]:
         if any(key in data for key in ("title", "start", "end", "location", "web1", "web2")):
             return [data]
         preferred_keys = ("meetings", "results", "items", "data")
+        saw_non_empty_preferred = False
         for key in preferred_keys:
             value = data.get(key)
             if isinstance(value, Iterable) and not isinstance(value, (str, bytes, Mapping)):
                 raw_items = list(value)
+                meetings = [meeting for meeting in raw_items if isinstance(meeting, Mapping)]
+                if meetings:
+                    return meetings
                 if raw_items:
-                    return [meeting for meeting in raw_items if isinstance(meeting, Mapping)]
+                    saw_non_empty_preferred = True
+        if saw_non_empty_preferred:
+            return []
         for key, value in data.items():
             if key not in preferred_keys and isinstance(value, Iterable) and not isinstance(value, (str, bytes, Mapping)):
                 meetings = [meeting for meeting in value if isinstance(meeting, Mapping)]
