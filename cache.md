@@ -8,15 +8,20 @@ Conferences listed here have already been included in an email notification.
 - `063496d23584784d` | COSMOGOLD IAP 2026 | 2026-12-14 to 2026-12-18 | IAP, Paris, France | notified 2026-07-06
 - `0bcaebac926f9a60` | Rubin Community Workshop 2027 | 2027-08-02 to 2027-08-06 | Tucson AZ USA | notified 2026-06-22
 - `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
+- `15c3f04335311366` | Saas Fee Advanced Doctoral Workshop 2027: From Astrophysics to Particle Physics: Cold Dark Matter and Beyond. | 2027-01-24 to 2027-01-29 | Saas Fee, Switzerland | notified 2026-09-14
+- `17a0ad690ff45416` | Forging Light: Interpreting Observations of High-Redshift Galaxies with Theoretical Models and Simulations | 2027-02-01 to 2027-02-05 | Grindelwald, Switzerland | notified 2026-09-14
+- `3168c9b611735b2c` | The Threshold of Galaxy Formation: A Tinsley Workshop | 2027-03-08 to 2027-03-10 | Yale University West Campus, New Haven, Connecticut, USA | notified 2026-09-14
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
 - `59c356287e13f938` | IAU Symposium 414: High-z Galaxies and Black Holes: The JWST/ALMA/GRAVITY Frontier | 2027-10-11 to 2027-10-15 | Puerto Natales, Chile | notified 2026-07-06
 - `6aca46cb69c0aac8` | Galaxy nuclei – Diversity, Dynamics, and Hidden Mass in Galactic Centers | 2026-11-16 to 2026-11-20 | ESO Santiago, Chile | notified 2026-05-11
 - `72219b2bc4588924` | The Super Conference: Super-Eddington Accretion onto Super-Massive Black Holes | 2027-03-08 to 2027-03-12 | Sexten Center for Astrophysics | notified 2026-08-24
 - `7732d89c3acd56ea` | LSST@Asia 2027 | 2027-04-19 to 2027-04-23 | Seoul, South Korea | notified 2026-06-15
+- `7ad5f557319ad0be` | Fundamental Physics from the Primordial Era with Galaxy Surveys (Aspen Winter Conference 2027) | 2027-01-17 to 2027-01-22 | Aspen Center for Physics700 W Gillespie StAspen, CO 81611, USA | notified 2026-09-14
 - `7af9fee9424d2ee6` | MATISSE Science Days | 2026-09-29 to 2026-10-02 | Budapest, Hungary | notified 2026-06-17
 - `7ffa9ff617350ec0` | Open SkAI 2026: Annual Astronomy & AI Conference at SkAI | 2026-09-08 to 2026-09-11 | NSF-Simons AI Institute for the Sky (SkAI), Chicago, USA | notified 2026-05-08
 - `8315e30203dcb483` | Simulation-Driven Cosmology and Large-Scale Structure: Emulators, Fields, and Galaxy Catalogs | 2027-03-01 to 2027-03-05 | Shanghai, China | notified 2026-08-24
+- `89c15d032e8bdb3e` | RiekeFest: The Growth of Infrared Astronomy and Active Galaxies from the Galactic Center to the Edge of the Universe | 2027-03-15 to 2027-03-19 | Tucson, Arizona, USA | notified 2026-09-14
 - `8ac28b41a2be1411` | 12th KIAS Workshop on Cosmology and Structure Formation | 2026-11-01 to 2026-11-07 | Korea Institute for Advanced Study (KIAS), Seoul, Republic of Korea | notified 2026-06-08
 - `8d1a1553f10e1b89` | INTEGRAL Legacy Conference 2026 | 2026-10-19 to 2026-10-23 | Paris, France | notified 2026-05-18
 - `9414e9270853ebc0` | Lighting up the Dark — Understanding Dark Matter from Particles to Galaxies | 2027-03-22 to 2027-03-26 | Sport & Kurhotel at Bad Moos, Sexten, Italy | notified 2026-08-24
