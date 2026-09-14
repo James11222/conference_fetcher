@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable, Mapping
 from html import unescape
+from typing import Any
 
 import requests
 
@@ -11,13 +12,13 @@ from .models import ConferenceEntry
 MEETINGS_API_URL = "https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/meetings/meetings?days=21"
 
 
-def fetch_recent_meetings() -> object:
+def fetch_recent_meetings() -> Any:
     response = requests.get(MEETINGS_API_URL, timeout=30)
     response.raise_for_status()
     return response.json()
 
 
-def parse_recent_meetings(data: object) -> list[ConferenceEntry]:
+def parse_recent_meetings(data: Any) -> list[ConferenceEntry]:
     meetings = _extract_meetings(data)
     return [entry for entry in (_build_entry(meeting) for meeting in meetings) if entry]
 
@@ -31,8 +32,9 @@ def _extract_meetings(data: object) -> list[Mapping[str, object]]:
         candidate_values.extend(value for key, value in data.items() if key not in preferred_keys)
         for value in candidate_values:
             if isinstance(value, Iterable) and not isinstance(value, (str, bytes, Mapping)):
-                meetings = [meeting for meeting in value if isinstance(meeting, Mapping)]
-                if meetings:
+                raw_items = list(value)
+                meetings = [meeting for meeting in raw_items if isinstance(meeting, Mapping)]
+                if raw_items:
                     return meetings
         return []
     if isinstance(data, Iterable) and not isinstance(data, (str, bytes)):

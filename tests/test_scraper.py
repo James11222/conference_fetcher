@@ -133,3 +133,20 @@ class ScraperTests(unittest.TestCase):
 
         self.assertEqual(len(entries), 1)
         self.assertEqual(entries[0].title, "Valid Conference")
+
+    def test_parse_recent_meetings_does_not_fall_through_after_malformed_wrapper(self) -> None:
+        data = {
+            "meetings": ["bad item"],
+            "payload": [
+                {
+                    "title": "Later Payload Conference",
+                    "start": "2026-12-01",
+                    "end": "2026-12-03",
+                    "location": "Vancouver, Canada",
+                }
+            ],
+        }
+
+        entries = parse_recent_meetings(data)
+
+        self.assertEqual(entries, [])
