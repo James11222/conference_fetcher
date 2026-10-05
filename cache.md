@@ -10,10 +10,12 @@ Conferences listed here have already been included in an email notification.
 - `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
 - `15c3f04335311366` | Saas Fee Advanced Doctoral Workshop 2027: From Astrophysics to Particle Physics: Cold Dark Matter and Beyond. | 2027-01-24 to 2027-01-29 | Saas Fee, Switzerland | notified 2026-09-14
 - `17a0ad690ff45416` | Forging Light: Interpreting Observations of High-Redshift Galaxies with Theoretical Models and Simulations | 2027-02-01 to 2027-02-05 | Grindelwald, Switzerland | notified 2026-09-14
+- `18ef750cd1a9dc08` | When galaxies meet: zooming into the multi-scale physics of interaction and mergers across cosmic time (GALMEET) | 2027-06-14 to 2027-06-18 | ESO Headquarters, Garching near Munich, Germany | notified 2026-10-05
 - `3168c9b611735b2c` | The Threshold of Galaxy Formation: A Tinsley Workshop | 2027-03-08 to 2027-03-10 | Yale University West Campus, New Haven, Connecticut, USA | notified 2026-09-14
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
 - `59c356287e13f938` | IAU Symposium 414: High-z Galaxies and Black Holes: The JWST/ALMA/GRAVITY Frontier | 2027-10-11 to 2027-10-15 | Puerto Natales, Chile | notified 2026-07-06
+- `61f0b3f7f3e18536` | WST UK Community Workshop | 2026-12-14 to 2026-12-16 | Institute of Astronomy, University of Cambridge, UK | notified 2026-10-05
 - `6aca46cb69c0aac8` | Galaxy nuclei – Diversity, Dynamics, and Hidden Mass in Galactic Centers | 2026-11-16 to 2026-11-20 | ESO Santiago, Chile | notified 2026-05-11
 - `72219b2bc4588924` | The Super Conference: Super-Eddington Accretion onto Super-Massive Black Holes | 2027-03-08 to 2027-03-12 | Sexten Center for Astrophysics | notified 2026-08-24
 - `7732d89c3acd56ea` | LSST@Asia 2027 | 2027-04-19 to 2027-04-23 | Seoul, South Korea | notified 2026-06-15
@@ -27,6 +29,7 @@ Conferences listed here have already been included in an email notification.
 - `9414e9270853ebc0` | Lighting up the Dark — Understanding Dark Matter from Particles to Galaxies | 2027-03-22 to 2027-03-26 | Sport & Kurhotel at Bad Moos, Sexten, Italy | notified 2026-08-24
 - `98f84bc1953f8df8` | Vera C. Rubin Observatory Community Workshop 2026 | 2026-07-27 to 2026-07-31 | SLAC Menlo Park | notified 2026-06-22
 - `9df2d69992ae404c` | 30 Years of STIS and the Future of UV Astronomy | 2027-03-17 to 2027-03-19 | Space Telescope Science Institute | notified 2026-08-24
+- `9f2dbc73a66f48c4` | Astronomical Data Analysis Software & Systems 2027 | 2027-10-03 to 2027-10-07 | Toronto, Canada | notified 2026-10-05
 - `a39694b89ab5ed06` | EAS 2027 | 2027-06-21 to 2027-06-25 | Vienna, Austria | notified 2026-07-13
 - `b47b7876716a1753` | A new window into the innermost regions of accreting massive black holes | 2027-04-04 to 2027-04-09 | Ascona, Switzerland | notified 2026-05-25
 - `c0767f6409e192cb` | Innovative Research and Techniques in Astronomy Communication | 2026-11-02 to 2026-11-06 | Tokyo (and online) | notified 2026-09-07
@@ -40,3 +43,4 @@ Conferences listed here have already been included in an email notification.
 - `ee96548478914d9f` | The 8th International Conference on Particle Physics and Astrophysics (ICPPA-2026) | 2026-10-27 to 2026-10-30 | Sevastopol Hotel Complex, 1A Bolshaya Yushunskaya Street, Moscow, Russia | notified 2026-07-27
 - `f5d21da39761baf2` | 12th Annual Science at Low Frequencies (SALF XII) conference - 2026 | 2026-12-07 to 2026-12-10 | Tempe, Arizona, USA | notified 2026-08-24
 - `fa2b206a8d3adde7` | Quasars and AGN: past, present, and future | 2027-09-06 to 2027-09-10 | Institute of Astronomy, University of Cambridge, UK | notified 2026-09-07
+- `fae3f87242a9a006` | Probing Dark Matter with Innovations in Stellar and Galactic Dynamics | 2027-08-02 to 2026-09-23 | Santa Barbara, USA | notified 2026-10-05
