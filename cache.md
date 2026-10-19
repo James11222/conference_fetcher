@@ -6,8 +6,10 @@ Conferences listed here have already been included in an email notification.
 - `05a244637bde8696` | AGN Jets from Gamsberg to the Multi-Messenger Frontier | 2027-01-18 to 2027-01-22 | Windhoek, Namibia | notified 2026-06-29
 - `05af32a473a2c94f` | ASI Symposium 008: The Dynamic Radio Sky | 2026-10-23 to 2026-10-25 | IIT Kanpur, UP, India | notified 2026-07-20
 - `063496d23584784d` | COSMOGOLD IAP 2026 | 2026-12-14 to 2026-12-18 | IAP, Paris, France | notified 2026-07-06
+- `08eb7f980e37d2ac` | CL2027: Panoramic Views of Galaxy Cluster Assembly | 2027-05-10 to 2027-05-14 | Tohoku University, Sendai, Japan | notified 2026-10-19
 - `0bcaebac926f9a60` | Rubin Community Workshop 2027 | 2027-08-02 to 2027-08-06 | Tucson AZ USA | notified 2026-06-22
 - `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
+- `0da9bb581a110192` | Environment matters: Star Formation with APEX and Beyond | 2027-01-10 to 2027-01-13 | Physikzentrum Bad Honnef, Germany | notified 2026-10-19
 - `15c3f04335311366` | Saas Fee Advanced Doctoral Workshop 2027: From Astrophysics to Particle Physics: Cold Dark Matter and Beyond. | 2027-01-24 to 2027-01-29 | Saas Fee, Switzerland | notified 2026-09-14
 - `178e6cf31e41e558` | IAU WG-PDPP Workshop 2026: Photographic Astronomical Spectra | 2026-10-20 to 2026-10-23 | Online via Zoom | notified 2026-10-12
 - `17a0ad690ff45416` | Forging Light: Interpreting Observations of High-Redshift Galaxies with Theoretical Models and Simulations | 2027-02-01 to 2027-02-05 | Grindelwald, Switzerland | notified 2026-09-14
@@ -37,6 +39,8 @@ Conferences listed here have already been included in an email notification.
 - `9f2dbc73a66f48c4` | Astronomical Data Analysis Software & Systems 2027 | 2027-10-03 to 2027-10-07 | Toronto, Canada | notified 2026-10-05
 - `a39694b89ab5ed06` | EAS 2027 | 2027-06-21 to 2027-06-25 | Vienna, Austria | notified 2026-07-13
 - `b47b7876716a1753` | A new window into the innermost regions of accreting massive black holes | 2027-04-04 to 2027-04-09 | Ascona, Switzerland | notified 2026-05-25
+- `b8f8dab2be21bd53` | Vasto Accretion Meeting 2027: Active Galactic Nuclei | 2027-06-28 to 2027-07-02 | Vasto (IT) | notified 2026-10-19
+- `c03eaf5f3afeb732` | The 2nd Milne Centre Winter Workshop on Stellar, Galactic and Extragalactic Astrophysics | 2027-01-28 to 2027-01-29 | University of Hull, United Kingdom | notified 2026-10-19
 - `c0767f6409e192cb` | Innovative Research and Techniques in Astronomy Communication | 2026-11-02 to 2026-11-06 | Tokyo (and online) | notified 2026-09-07
 - `c81944bc85e52e9b` | Little Red Dots 2026 | 2026-06-22 to 2026-06-24 | online | notified 2026-05-08
 - `ce23b50288229947` | IAU ECRWG Conference — Synergies between Observational and Theoretical Astronomy: Results, Challenges and Future Prospects | 2026-11-17 to 2026-11-19 | Virtual | notified 2026-07-20
