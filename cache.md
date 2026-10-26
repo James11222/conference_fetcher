@@ -14,7 +14,9 @@ Conferences listed here have already been included in an email notification.
 - `178e6cf31e41e558` | IAU WG-PDPP Workshop 2026: Photographic Astronomical Spectra | 2026-10-20 to 2026-10-23 | Online via Zoom | notified 2026-10-12
 - `17a0ad690ff45416` | Forging Light: Interpreting Observations of High-Redshift Galaxies with Theoretical Models and Simulations | 2027-02-01 to 2027-02-05 | Grindelwald, Switzerland | notified 2026-09-14
 - `18ef750cd1a9dc08` | When galaxies meet: zooming into the multi-scale physics of interaction and mergers across cosmic time (GALMEET) | 2027-06-14 to 2027-06-18 | ESO Headquarters, Garching near Munich, Germany | notified 2026-10-05
+- `1e21f18eb6c39b1c` | HWO 2027 Science Meeting | 2027-09-12 to 2027-09-16 | Pasadena, CA | notified 2026-10-26
 - `1e531e36be25e3d6` | Bridging Scales at Cosmic Dawn and Reionization: Stars, Galaxies, Black Holes and the Intergalactic Medium | 2027-07-12 to 2027-07-16 | Institute of Astronomy, University of Cambridge, UK | notified 2026-10-12
+- `2c8870988be5bdc4` | Galaxy Groups as Laboratories of Structure Formation: New Insights and Challenges | 2027-06-21 to 2027-06-25 | Sexten (Italy) | notified 2026-10-26
 - `3168c9b611735b2c` | The Threshold of Galaxy Formation: A Tinsley Workshop | 2027-03-08 to 2027-03-10 | Yale University West Campus, New Haven, Connecticut, USA | notified 2026-09-14
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
@@ -33,6 +35,7 @@ Conferences listed here have already been included in an email notification.
 - `89c15d032e8bdb3e` | RiekeFest: The Growth of Infrared Astronomy and Active Galaxies from the Galactic Center to the Edge of the Universe | 2027-03-15 to 2027-03-19 | Tucson, Arizona, USA | notified 2026-09-14
 - `8ac28b41a2be1411` | 12th KIAS Workshop on Cosmology and Structure Formation | 2026-11-01 to 2026-11-07 | Korea Institute for Advanced Study (KIAS), Seoul, Republic of Korea | notified 2026-06-08
 - `8d1a1553f10e1b89` | INTEGRAL Legacy Conference 2026 | 2026-10-19 to 2026-10-23 | Paris, France | notified 2026-05-18
+- `931bc811a30f3112` | SIDM Donostia 2027: Dark Matter Dynamics Across Cosmic Epochs | 2027-06-07 to 2027-06-18 | Donostia International Physics Center, San Sebastián, Spain | notified 2026-10-26
 - `9414e9270853ebc0` | Lighting up the Dark — Understanding Dark Matter from Particles to Galaxies | 2027-03-22 to 2027-03-26 | Sport & Kurhotel at Bad Moos, Sexten, Italy | notified 2026-08-24
 - `98f84bc1953f8df8` | Vera C. Rubin Observatory Community Workshop 2026 | 2026-07-27 to 2026-07-31 | SLAC Menlo Park | notified 2026-06-22
 - `9df2d69992ae404c` | 30 Years of STIS and the Future of UV Astronomy | 2027-03-17 to 2027-03-19 | Space Telescope Science Institute | notified 2026-08-24
