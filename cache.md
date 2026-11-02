@@ -10,6 +10,7 @@ Conferences listed here have already been included in an email notification.
 - `0bcaebac926f9a60` | Rubin Community Workshop 2027 | 2027-08-02 to 2027-08-06 | Tucson AZ USA | notified 2026-06-22
 - `0cf11d9373c3adc2` | ngVLA International Science Conference 2026 | 2026-11-10 to 2026-11-13 | Sendai SME Activation Center, Japan | notified 2026-06-17
 - `0da9bb581a110192` | Environment matters: Star Formation with APEX and Beyond | 2027-01-10 to 2027-01-13 | Physikzentrum Bad Honnef, Germany | notified 2026-10-19
+- `13126e5574ff4177` | The Roadmap to Planets: physical processes across evolutionary stages in star and planet formation | 2027-01-25 to 2027-01-29 | Ringberg Castle | notified 2026-11-02
 - `15c3f04335311366` | Saas Fee Advanced Doctoral Workshop 2027: From Astrophysics to Particle Physics: Cold Dark Matter and Beyond. | 2027-01-24 to 2027-01-29 | Saas Fee, Switzerland | notified 2026-09-14
 - `178e6cf31e41e558` | IAU WG-PDPP Workshop 2026: Photographic Astronomical Spectra | 2026-10-20 to 2026-10-23 | Online via Zoom | notified 2026-10-12
 - `17a0ad690ff45416` | Forging Light: Interpreting Observations of High-Redshift Galaxies with Theoretical Models and Simulations | 2027-02-01 to 2027-02-05 | Grindelwald, Switzerland | notified 2026-09-14
@@ -40,6 +41,7 @@ Conferences listed here have already been included in an email notification.
 - `98f84bc1953f8df8` | Vera C. Rubin Observatory Community Workshop 2026 | 2026-07-27 to 2026-07-31 | SLAC Menlo Park | notified 2026-06-22
 - `9df2d69992ae404c` | 30 Years of STIS and the Future of UV Astronomy | 2027-03-17 to 2027-03-19 | Space Telescope Science Institute | notified 2026-08-24
 - `9f2dbc73a66f48c4` | Astronomical Data Analysis Software & Systems 2027 | 2027-10-03 to 2027-10-07 | Toronto, Canada | notified 2026-10-05
+- `a28e9c5f08a8a33d` | 2027 Michigan Cosmology Summer School | 2027-06-14 to 2027-06-18 | Ann Arbor, MI | notified 2026-11-02
 - `a39694b89ab5ed06` | EAS 2027 | 2027-06-21 to 2027-06-25 | Vienna, Austria | notified 2026-07-13
 - `b47b7876716a1753` | A new window into the innermost regions of accreting massive black holes | 2027-04-04 to 2027-04-09 | Ascona, Switzerland | notified 2026-05-25
 - `b8f8dab2be21bd53` | Vasto Accretion Meeting 2027: Active Galactic Nuclei | 2027-06-28 to 2027-07-02 | Vasto (IT) | notified 2026-10-19
@@ -53,6 +55,7 @@ Conferences listed here have already been included in an email notification.
 - `d57bd992b58b5406` | Probe Combination for Dark Matter Physics in the Era of Large Surveys | 2026-09-02 to 2026-09-04 | Chicago, IL | notified 2026-06-29
 - `e611e6b5fc4ddbc7` | SPARCS XIV: The SKAO Awakens (SKA Pathfinder and Radio Continuum Surveys conference) | 2026-10-19 to 2026-10-23 | Seoul, South Korea | notified 2026-05-11
 - `ee96548478914d9f` | The 8th International Conference on Particle Physics and Astrophysics (ICPPA-2026) | 2026-10-27 to 2026-10-30 | Sevastopol Hotel Complex, 1A Bolshaya Yushunskaya Street, Moscow, Russia | notified 2026-07-27
+- `eebe90944944f11a` | Observing and Simulating Galaxy Evolution in the Era of JWST | 2027-06-13 to 2027-06-18 | Congressi Stefano Franscini, Ascona, Switzerland | notified 2026-11-02
 - `f37c6f194486be2d` | GBO/NRAO Single Dish Radio Astronomy Summer School | 2027-06-27 to 2027-07-03 | Green Bank, WV, USA | notified 2026-10-12
 - `f5d21da39761baf2` | 12th Annual Science at Low Frequencies (SALF XII) conference - 2026 | 2026-12-07 to 2026-12-10 | Tempe, Arizona, USA | notified 2026-08-24
 - `fa2b206a8d3adde7` | Quasars and AGN: past, present, and future | 2027-09-06 to 2027-09-10 | Institute of Astronomy, University of Cambridge, UK | notified 2026-09-07
