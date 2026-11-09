@@ -19,8 +19,12 @@ Conferences listed here have already been included in an email notification.
 - `1e531e36be25e3d6` | Bridging Scales at Cosmic Dawn and Reionization: Stars, Galaxies, Black Holes and the Intergalactic Medium | 2027-07-12 to 2027-07-16 | Institute of Astronomy, University of Cambridge, UK | notified 2026-10-12
 - `2c8870988be5bdc4` | Galaxy Groups as Laboratories of Structure Formation: New Insights and Challenges | 2027-06-21 to 2027-06-25 | Sexten (Italy) | notified 2026-10-26
 - `3168c9b611735b2c` | The Threshold of Galaxy Formation: A Tinsley Workshop | 2027-03-08 to 2027-03-10 | Yale University West Campus, New Haven, Connecticut, USA | notified 2026-09-14
+- `319c855532038bc0` | Stirring chemical evolution of galaxies near and far through gas-phase and dust abundances | 2027-09-06 to 2027-09-10 | Garching near Munich | notified 2026-11-09
+- `3272a7324cfa8db9` | FornaX collaboration meeting 2027 | 2027-04-05 to 2027-04-09 | Salamanca, Spain | notified 2026-11-09
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
+- `464ad7b351ddc77c` | 33rd International Astronomical Union General Assembly | 2027-08-10 to 2027-08-19 | Rome, Italy | notified 2026-11-09
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
+- `532fd15701fe3396` | Multiphase Outflows 2027: Stellar Feedback and the Driving of Multiphase Galactic Winds | 2027-03-08 to 2027-03-12 | Schloss Aspenstein, Kochel am See, Bavaria, Germany | notified 2026-11-09
 - `571ed5884385800e` | Cosmic rays in the molecular interstellar medium | 2027-03-15 to 2027-03-19 | Duisburg, Germany | notified 2026-10-12
 - `59c356287e13f938` | IAU Symposium 414: High-z Galaxies and Black Holes: The JWST/ALMA/GRAVITY Frontier | 2027-10-11 to 2027-10-15 | Puerto Natales, Chile | notified 2026-07-06
 - `61f0b3f7f3e18536` | WST UK Community Workshop | 2026-12-14 to 2026-12-16 | Institute of Astronomy, University of Cambridge, UK | notified 2026-10-05
