@@ -40,6 +40,7 @@ Conferences listed here have already been included in an email notification.
 - `89c15d032e8bdb3e` | RiekeFest: The Growth of Infrared Astronomy and Active Galaxies from the Galactic Center to the Edge of the Universe | 2027-03-15 to 2027-03-19 | Tucson, Arizona, USA | notified 2026-09-14
 - `8ac28b41a2be1411` | 12th KIAS Workshop on Cosmology and Structure Formation | 2026-11-01 to 2026-11-07 | Korea Institute for Advanced Study (KIAS), Seoul, Republic of Korea | notified 2026-06-08
 - `8d1a1553f10e1b89` | INTEGRAL Legacy Conference 2026 | 2026-10-19 to 2026-10-23 | Paris, France | notified 2026-05-18
+- `92ef00326deb9b14` | Frontiers in Baryonic Halos: New Insights into the resolved circumgalactic medium and faint stellar halos | 2027-06-07 to 2027-06-10 | Chicago, IL | notified 2026-11-16
 - `931bc811a30f3112` | SIDM Donostia 2027: Dark Matter Dynamics Across Cosmic Epochs | 2027-06-07 to 2027-06-18 | Donostia International Physics Center, San Sebastián, Spain | notified 2026-10-26
 - `9414e9270853ebc0` | Lighting up the Dark — Understanding Dark Matter from Particles to Galaxies | 2027-03-22 to 2027-03-26 | Sport & Kurhotel at Bad Moos, Sexten, Italy | notified 2026-08-24
 - `98f84bc1953f8df8` | Vera C. Rubin Observatory Community Workshop 2026 | 2026-07-27 to 2026-07-31 | SLAC Menlo Park | notified 2026-06-22
