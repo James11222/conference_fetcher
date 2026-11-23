@@ -21,6 +21,7 @@ Conferences listed here have already been included in an email notification.
 - `3168c9b611735b2c` | The Threshold of Galaxy Formation: A Tinsley Workshop | 2027-03-08 to 2027-03-10 | Yale University West Campus, New Haven, Connecticut, USA | notified 2026-09-14
 - `319c855532038bc0` | Stirring chemical evolution of galaxies near and far through gas-phase and dust abundances | 2027-09-06 to 2027-09-10 | Garching near Munich | notified 2026-11-09
 - `3272a7324cfa8db9` | FornaX collaboration meeting 2027 | 2027-04-05 to 2027-04-09 | Salamanca, Spain | notified 2026-11-09
+- `401db34ae10711ec` | Unveiling the Particle Nature of the Dark Universe with Radio Astronomy | 2027-04-06 to 2027-04-08 | Green Bank Observatory, WV, USA | notified 2026-11-23
 - `43b1ebbce624ee66` | Cosmology and galaxy astrophysics with simulations and machine learning 2027 | 2027-01-04 to 2027-01-08 | Flatiron Institute's Center for Computational Astrophysics | notified 2026-05-08
 - `464ad7b351ddc77c` | 33rd International Astronomical Union General Assembly | 2027-08-10 to 2027-08-19 | Rome, Italy | notified 2026-11-09
 - `4af5b441ebb4ecb1` | Massive Black Holes in the First Billion Years II | 2027-04-26 to 2027-04-30 | Sunset Beach Hotel, Benalmadena, Spain | notified 2026-06-15
@@ -29,7 +30,9 @@ Conferences listed here have already been included in an email notification.
 - `59c356287e13f938` | IAU Symposium 414: High-z Galaxies and Black Holes: The JWST/ALMA/GRAVITY Frontier | 2027-10-11 to 2027-10-15 | Puerto Natales, Chile | notified 2026-07-06
 - `61f0b3f7f3e18536` | WST UK Community Workshop | 2026-12-14 to 2026-12-16 | Institute of Astronomy, University of Cambridge, UK | notified 2026-10-05
 - `6aca46cb69c0aac8` | Galaxy nuclei – Diversity, Dynamics, and Hidden Mass in Galactic Centers | 2026-11-16 to 2026-11-20 | ESO Santiago, Chile | notified 2026-05-11
+- `6b6248818e5a5dce` | Cosmology on Safari 2027 | 2027-03-14 to 2027-03-20 | Maun, Botswana | notified 2026-11-23
 - `72219b2bc4588924` | The Super Conference: Super-Eddington Accretion onto Super-Massive Black Holes | 2027-03-08 to 2027-03-12 | Sexten Center for Astrophysics | notified 2026-08-24
+- `74f4c583659075d2` | 887th Wilhelm and Else Heraeus Seminar on Neutron Stars & Pulsars: From Ultra-Dense Matter to Multi-Wavelength Radiation | 2027-06-21 to 2027-06-26 | Physics Centre Bad Honnef, Germany | notified 2026-11-23
 - `7732d89c3acd56ea` | LSST@Asia 2027 | 2027-04-19 to 2027-04-23 | Seoul, South Korea | notified 2026-06-15
 - `7ad5f557319ad0be` | Fundamental Physics from the Primordial Era with Galaxy Surveys (Aspen Winter Conference 2027) | 2027-01-17 to 2027-01-22 | Aspen Center for Physics700 W Gillespie StAspen, CO 81611, USA | notified 2026-09-14
 - `7af9fee9424d2ee6` | MATISSE Science Days | 2026-09-29 to 2026-10-02 | Budapest, Hungary | notified 2026-06-17
